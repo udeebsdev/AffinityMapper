@@ -64,7 +64,7 @@ public class GetUser extends AsyncTask<String, Void, Person> {
         System.out.println(result.getEmail());
         System.out.println(this.passedView != null ? true : false);
         System.out.println(addressView != null ? true : false);
-        // addressView.setText("something");
+        addressView.setText(result.getName());
 // close the progress dialog and tell the activity that you've received a result 
     }
 }

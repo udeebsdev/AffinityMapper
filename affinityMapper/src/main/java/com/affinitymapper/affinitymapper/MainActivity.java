@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 
     public void sampleButtonClicked(View view){
 
-        new GetUser(view).execute("udeeb");
+        new GetUser(view.getRootView()).execute("udeeb");
 
     }
 
