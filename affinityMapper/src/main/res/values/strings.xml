@@ -4,4 +4,15 @@
     <string name="app_name">AffinityMapper</string>
     <string name="title_activity_maps">Map</string>
 
+    <string-array name="interestOptions">
+        <item>Sport</item>
+        <item>Literature</item>
+        <item>History</item>
+        <item>Movies</item>
+        <item>Health</item>
+        <item>Politics</item>
+        <item>Technology</item>
+        <item>Food</item>
+    </string-array>
+
 </resources>
