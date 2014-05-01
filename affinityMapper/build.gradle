@@ -24,5 +24,6 @@ dependencies {
     // The Google Repository (separate from the corresponding library) can be found in the Extras category.
     // compile 'com.google.android.gms:play-services:4.2.42'
     compile 'com.android.support:appcompat-v7:19.+'
+    compile 'com.google.android.gms:play-services:4.3.23'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
