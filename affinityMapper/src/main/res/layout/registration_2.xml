@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/registerLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register New Account"
+        android:background="#66CCFF"
+
+        />
+
+    <TableLayout
+        android:id="@+id/newRegistrationTable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/registerLabel"
+        android:layout_marginTop="22dp">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/interestGroups"
+                android:layout_below="@id/newRegistrationTable"
+                android:text="Interest Groups"
+                android:weightSum="1.0"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_marginTop="50dp"
+                />
+
+            <Spinner
+                android:id="@+id/phone_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1.0"
+                android:layout_toRightOf="@id/interestGroups"
+                android:layout_below="@id/newRegistrationTable"
+                android:entries="@array/interestOptions"
+                android:gravity="center"
+                android:layout_marginTop="50dp"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/proximityText"
+                android:layout_below="@id/interestGroups"
+                android:text="Proximity for Alert"
+                android:weightSum="1.0"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_marginTop="50dp"
+                />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Save"
+        android:layout_marginTop="16dp"
+        android:background="#C4EBFF"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        />
+
+    <SeekBar
+        android:id="@+id/seek1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:progress="20"
+        android:secondaryProgress="20"
+        android:layout_above="@id/saveButton"
+        />
+
+
+</RelativeLayout>

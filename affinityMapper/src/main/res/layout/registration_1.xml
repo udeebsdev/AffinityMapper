@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Display Name -->
+
+    <TextView
+        android:id="@+id/registerLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register New Account"
+        android:background="#66CCFF"
+
+        />
+
+    <EditText
+        android:id="@+id/displayNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="50dp"
+        android:hint="Display Name"
+        android:layout_below="@id/registerLabel"
+        />
+
+    <!-- Phone -->
+
+    <EditText
+        android:id="@+id/phoneNumberEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="50dp"
+        android:hint="Phone Number"
+        android:layout_below="@id/displayNameEdit"
+        />
+
+    <CheckBox
+        android:id="@+id/phoneVisibilityCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phoneNumberEdit"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+    <TextView
+        android:id="@+id/phoneVisibilityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/phoneVisibilityCheckBox"
+        android:layout_below="@id/phoneNumberEdit"
+        android:text="Make Phone Number Visible"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+    <!-- Address -->
+
+    <EditText
+        android:id="@+id/addressEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="80dp"
+        android:hint="Address"
+        android:layout_below="@id/phoneNumberEdit"
+        />
+
+    <CheckBox
+        android:id="@+id/addressVisibilityCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addressEdit"
+        android:layout_marginLeft="15dp"
+        />
+
+    <TextView
+        android:id="@+id/addressVisibilityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/phoneVisibilityCheckBox"
+        android:layout_below="@id/addressEdit"
+        android:text="Make Address Visible"
+        android:layout_marginTop="8dp"
+        />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Next"
+        android:layout_marginTop="16dp"
+        android:background="#C4EBFF"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        />
+
+
+</RelativeLayout>
