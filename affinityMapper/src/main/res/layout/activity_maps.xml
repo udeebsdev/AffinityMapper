@@ -3,5 +3,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/map"
-    tools:context="com.affinitymapper.affinitymapper.MapsActivity"
+    tools:context="com.affinitymapper.affinitymapper.activities.MapsActivity"
     android:name="com.google.android.gms.maps.SupportMapFragment"/>

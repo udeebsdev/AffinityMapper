@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
-import com.affinitymapper.affinitymapper.model.*;
+import com.affinitymapper.affinitymapper.model.MatchingPersonList;
 import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
@@ -15,7 +15,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 /**
  * Created by udeebsdev on 4/30/14.
@@ -26,7 +25,7 @@ public class GetNearByUsers extends AsyncTask<String, Void, MatchingPersonList> 
 
     private View passedView;
 
-    public GetNearByUsers(View view){
+    public GetNearByUsers(View view) {
         this.passedView = view;
     }
 
@@ -41,7 +40,7 @@ public class GetNearByUsers extends AsyncTask<String, Void, MatchingPersonList> 
         String contactId = params[0];
         try {
             AndroidHttpClient client = AndroidHttpClient.newInstance("Android", null);
-            HttpUriRequest request = new HttpGet(URL_BASE  +
+            HttpUriRequest request = new HttpGet(URL_BASE +
                     contactId);
             HttpResponse response = client.execute(request);
             Gson gson = new Gson();
@@ -61,6 +60,5 @@ public class GetNearByUsers extends AsyncTask<String, Void, MatchingPersonList> 
         super.onPostExecute(result);
         TextView addressView = (TextView) this.passedView.findViewById(R.id.sampleText);
         addressView.setText("something");
-// close the progress dialog and tell the activity that you've received a result 
     }
 }
