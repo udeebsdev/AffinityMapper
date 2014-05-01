@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
-import com.affinitymapper.affinitymapper.model.*;
+import com.affinitymapper.affinitymapper.model.Person;
 import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
@@ -15,18 +15,17 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class GetNearByUsers extends AsyncTask<String, Void, MatchingPersonList> {
+public class GetUser extends AsyncTask<String, Void, Person> {
 
-    String URL_BASE = "https://teamflyte-affinitymapper.appspot.com/_ah/api/affinitymapper/v1/getNearByUsers/";
+    String URL_BASE = "https://teamflyte-affinitymapper.appspot.com/_ah/api/affinitymapper/v1/user/";
 
     private View passedView;
 
-    public GetNearByUsers(View view){
+    public GetUser(View view) {
         this.passedView = view;
     }
 
@@ -37,17 +36,19 @@ public class GetNearByUsers extends AsyncTask<String, Void, MatchingPersonList> 
     }
 
     @Override
-    protected MatchingPersonList doInBackground(String... params) {
+    protected Person doInBackground(String... params) {
         String contactId = params[0];
+        System.out.println(params);
         try {
             AndroidHttpClient client = AndroidHttpClient.newInstance("Android", null);
-            HttpUriRequest request = new HttpGet(URL_BASE  +
+            HttpUriRequest request = new HttpGet(URL_BASE +
                     contactId);
             HttpResponse response = client.execute(request);
             Gson gson = new Gson();
-            MatchingPersonList result = gson.fromJson(
+            //System.out.println(response.getEntity().getContent());
+            Person result = gson.fromJson(
                     new InputStreamReader(response.getEntity().getContent()),
-                    MatchingPersonList.class);
+                    Person.class);
             client.close();
             return result;
         } catch (Exception ex) {
@@ -57,10 +58,13 @@ public class GetNearByUsers extends AsyncTask<String, Void, MatchingPersonList> 
     }
 
     @Override
-    protected void onPostExecute(MatchingPersonList result) {
+    protected void onPostExecute(Person result) {
         super.onPostExecute(result);
         TextView addressView = (TextView) this.passedView.findViewById(R.id.sampleText);
-        addressView.setText("something");
+        System.out.println(result.getEmail());
+        System.out.println(this.passedView != null ? true : false);
+        System.out.println(addressView != null ? true : false);
+        // addressView.setText("something");
 // close the progress dialog and tell the activity that you've received a result 
     }
 }

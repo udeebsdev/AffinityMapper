@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.affinitymapper.affinitymapper.repository.restCalls.GetNearByUsers;
+import com.affinitymapper.affinitymapper.repository.restCalls.*;
 
 
 public class MainActivity extends Activity {
@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 
     public void sampleButtonClicked(View view){
 
-        new GetNearByUsers(view).execute();
+        new GetUser(view).execute("udeeb");
 
     }
 
