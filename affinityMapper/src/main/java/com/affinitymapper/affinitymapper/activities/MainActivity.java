@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.repository.restCalls.GetUser;
+import com.affinitymapper.affinitymapper.repository.restCalls.GetUserCall;
 
 
 public class MainActivity extends Activity {
@@ -27,7 +28,7 @@ public class MainActivity extends Activity {
 
     public void sampleButtonClicked(View view) {
         System.out.println("Button Clicked " +view.getId());
-        new GetUser(view.getRootView()).execute("udeeb");
+        new GetUserCall(view.getRootView()).execute("udeeb");
     }
 
     @Override

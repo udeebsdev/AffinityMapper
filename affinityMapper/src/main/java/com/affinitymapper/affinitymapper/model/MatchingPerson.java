@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class MatchingPerson {
+public class MatchingPerson implements BaseModel{
 
     private String name;
     private String email;
