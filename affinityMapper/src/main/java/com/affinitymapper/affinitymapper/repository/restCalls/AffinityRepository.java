@@ -34,6 +34,8 @@ public abstract class AffinityRepository extends AsyncTask<String, Void, BaseMod
 
     @Override
     protected void onPreExecute() {
+        System.out.println("Running PreExecute... ");
+
         super.onPreExecute();
     }
 
