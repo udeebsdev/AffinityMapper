@@ -1,18 +1,15 @@
 package com.affinitymapper.affinitymapper.repository.restCalls;
 
+import android.app.Activity;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
-import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.model.BaseModel;
-import com.affinitymapper.affinitymapper.model.Person;
 import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import java.io.IOException;
@@ -24,12 +21,19 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
 
    protected String URL_BASE = "https://teamflyte-affinitymapper.appspot.com/_ah/api/affinitymapper/v1/";
 
-    protected View passedView;
+    protected View currentView;
+
+    protected Activity parentActivity;
 
     protected Gson gson = new Gson();
 
+    public AffinityRepository(View view, Activity activity) {
+        this.currentView = view;
+        this.parentActivity = activity;
+    }
+
     public AffinityRepository(View view) {
-        this.passedView = view;
+        this.currentView = view;
     }
 
     @Override

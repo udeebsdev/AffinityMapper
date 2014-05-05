@@ -8,14 +8,11 @@ import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.Person;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created by udeebsdev on 4/30/14.
@@ -56,9 +53,9 @@ public class AddUser extends AffinityRepository {
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
         Person person = (Person)result;
-        TextView addressView = (TextView) this.passedView.findViewById(R.id.sampleText);
+        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
         System.out.println(person.getEmail());
-        System.out.println(this.passedView != null ? true : false);
+        System.out.println(this.currentView != null ? true : false);
         System.out.println(addressView != null ? true : false);
         addressView.setText(person.getName());
 

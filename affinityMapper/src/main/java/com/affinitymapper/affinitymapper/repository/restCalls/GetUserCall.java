@@ -1,5 +1,6 @@
 package com.affinitymapper.affinitymapper.repository.restCalls;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,9 +21,14 @@ import java.io.InputStreamReader;
 public class GetUserCall extends AffinityRepository {
 
 
+    public GetUserCall(View view, Activity activity) {
+        super(view, activity);
+    }
+
     public GetUserCall(View view) {
         super(view);
     }
+
 
     @Override
     protected void onPreExecute() {
@@ -45,9 +51,9 @@ public class GetUserCall extends AffinityRepository {
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
         Person person = (Person)result;
-        TextView addressView = (TextView) this.passedView.findViewById(R.id.sampleText);
+        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
         System.out.println(person.getEmail());
-        System.out.println(this.passedView != null ? true : false);
+        System.out.println(this.currentView != null ? true : false);
         System.out.println(addressView != null ? true : false);
         addressView.setText(person.getName());
 
