@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.repository.restCalls.GetUserCall;
@@ -16,6 +17,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String accountName = (String) getIntent().getSerializableExtra("accountName");
+        TextView sampleText = (TextView) this.findViewById(R.id.sampleText);
+        sampleText.setText("Logged in as " + accountName);
     }
 
     @Override
@@ -26,8 +30,14 @@ public class MainActivity extends Activity {
     }
 
     public void sampleButtonClicked(View view) {
-        System.out.println("Button Clicked " +view.getId());
+        System.out.println("Button Clicked " + view.getId());
         new GetUserCall(view.getRootView()).execute("udeeb");
+    }
+
+    public void signOutButtonClicked(View view) {
+        System.out.println("Button Clicked " + view.getId());
+        setResult(12, getIntent());
+        finish();
     }
 
     @Override

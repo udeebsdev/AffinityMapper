@@ -27,5 +27,19 @@
         android:layout_marginTop="75dp"
         android:onClick="sampleButtonClicked"
         />
+    <Button
+        android:id="@+id/signOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Sign Out"
+        android:layout_below="@id/sampleButton"
+        android:layout_centerVertical="true"
+        android:background="#9DDEFF"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:layout_marginTop="75dp"
+        android:onClick="signOutButtonClicked"
+        />
 
 </RelativeLayout>
