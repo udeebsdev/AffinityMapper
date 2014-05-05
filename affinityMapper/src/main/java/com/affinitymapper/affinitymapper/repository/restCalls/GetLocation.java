@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.model.BaseModel;
+import com.affinitymapper.affinitymapper.model.Location;
 import com.affinitymapper.affinitymapper.model.Person;
 
 import org.apache.http.HttpResponse;
@@ -17,10 +18,10 @@ import java.io.InputStreamReader;
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class GetUserCall extends AffinityRepository {
+public class GetLocation extends AffinityRepository {
 
 
-    public GetUserCall(View view) {
+    public GetLocation(View view) {
         super(view);
     }
 
@@ -32,7 +33,7 @@ public class GetUserCall extends AffinityRepository {
 
     @Override
     public HttpUriRequest createRequest(Object... params) {
-        return new HttpGet(URL_BASE + "user/" + "udeeb");
+        return new HttpGet(URL_BASE + "location/user/" + "udeeb");
     }
 
     @Override
@@ -44,12 +45,12 @@ public class GetUserCall extends AffinityRepository {
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        Person person = (Person)result;
+        Location person = (Location)result;
         TextView addressView = (TextView) this.passedView.findViewById(R.id.sampleText);
         System.out.println(person.getEmail());
         System.out.println(this.passedView != null ? true : false);
         System.out.println(addressView != null ? true : false);
-        addressView.setText(person.getName());
+        addressView.setText(person.getLatitude().toString());
 
         return true;
     }

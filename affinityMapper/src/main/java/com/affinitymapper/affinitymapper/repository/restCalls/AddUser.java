@@ -8,19 +8,22 @@ import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.Person;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class GetUserCall extends AffinityRepository {
+public class AddUser extends AffinityRepository {
 
 
-    public GetUserCall(View view) {
+    public AddUser(View view) {
         super(view);
     }
 
@@ -32,7 +35,15 @@ public class GetUserCall extends AffinityRepository {
 
     @Override
     public HttpUriRequest createRequest(Object... params) {
-        return new HttpGet(URL_BASE + "user/" + "udeeb");
+        HttpPost uriRequest= new HttpPost(URL_BASE + "user/" + params[0]);
+        Person person = (Person) params[0];
+//        try {
+//             uriRequest.setEntity(new UrlEncodedFormEntity(person));
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+
+        return uriRequest;
     }
 
     @Override

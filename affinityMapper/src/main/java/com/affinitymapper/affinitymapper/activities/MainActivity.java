@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.affinitymapper.affinitymapper.R;
-import com.affinitymapper.affinitymapper.repository.restCalls.GetUser;
 import com.affinitymapper.affinitymapper.repository.restCalls.GetUserCall;
 
 

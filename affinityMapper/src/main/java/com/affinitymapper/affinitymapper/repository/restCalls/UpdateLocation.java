@@ -17,10 +17,10 @@ import java.io.InputStreamReader;
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class GetUserCall extends AffinityRepository {
+public class UpdateLocation extends AffinityRepository {
 
 
-    public GetUserCall(View view) {
+    public UpdateLocation(View view) {
         super(view);
     }
 
@@ -32,7 +32,7 @@ public class GetUserCall extends AffinityRepository {
 
     @Override
     public HttpUriRequest createRequest(Object... params) {
-        return new HttpGet(URL_BASE + "user/" + "udeeb");
+        return new HttpGet(URL_BASE + "getNearByUsers/" + "udeeb");
     }
 
     @Override

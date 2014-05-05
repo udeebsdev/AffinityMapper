@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * Created by udeebsdev on 5/1/14.
  */
-public abstract class AffinityRepository extends AsyncTask<String, Void, BaseModel> {
+public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseModel> implements IAffinityRepository {
 
    protected String URL_BASE = "https://teamflyte-affinitymapper.appspot.com/_ah/api/affinitymapper/v1/";
 
@@ -40,7 +40,7 @@ public abstract class AffinityRepository extends AsyncTask<String, Void, BaseMod
     }
 
     @Override
-    protected BaseModel doInBackground(String... params) {
+    public BaseModel doInBackground(Object... params) {
         try {
             AndroidHttpClient client = AndroidHttpClient.newInstance("Android", null);
             HttpUriRequest request = createRequest(params);
@@ -59,7 +59,7 @@ public abstract class AffinityRepository extends AsyncTask<String, Void, BaseMod
         return null;
     }
 
-    public abstract HttpUriRequest createRequest(String... params);
+    public abstract HttpUriRequest createRequest(Object... params);
 
     public abstract BaseModel parseResponse(HttpResponse response) throws IOException;
 
