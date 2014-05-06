@@ -42,8 +42,7 @@ public class AddUser extends AffinityRepository {
         System.out.println(gson.toJson((Person) params[0]));
         StringEntity se = new StringEntity(gson.toJson((Person) params[0]));
         uriRequest.setEntity(se);
-        uriRequest.setHeader("Accept", "application/json");
-        uriRequest.setHeader("Content-type", "application/json");
+
         return uriRequest;
     }
 

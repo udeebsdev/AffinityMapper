@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.activities.MainActivity;
+import com.affinitymapper.affinitymapper.activities.MapsActivity;
 import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.MatchingPersonList;
 import com.google.android.gms.plus.Plus;
@@ -62,7 +63,7 @@ public class GetNearByUsersCall extends AffinityRepository {
 //        System.out.println(addressView != null ? true : false);
 //        addressView.setText(person.getMatchingPersons().get(0).getEmail() + " " + person.getMatchingPersons().get(0).getLatitude());
 
-        Intent mapIntent = new Intent(this.parentActivity, MainActivity.class);
+        Intent mapIntent = new Intent(this.parentActivity, MapsActivity.class);
         mapIntent.putExtra("personList", personList);
         this.parentActivity.startActivity(mapIntent);
 

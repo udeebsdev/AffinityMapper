@@ -20,7 +20,7 @@
             android:value="AIzaSyDHHdJDjoQqh92rdVRVmKxk7H_ftO2aUkc" />
 
         <activity
-            android:name="com.affinitymapper.affinitymapper.activities.RegistrationActivity"
+            android:name="com.affinitymapper.affinitymapper.activities.MainActivity"
             android:label="@string/title_activity_registration">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,7 @@
             android:label="Maps" >
         </activity>
         <activity
-            android:name="com.affinitymapper.affinitymapper.activities.MainActivity"
+            android:name="com.affinitymapper.affinitymapper.activities.RegistrationActivity"
             android:label="@string/title_activity_sign_in" >
         </activity>
     </application>

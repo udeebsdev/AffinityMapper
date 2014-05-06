@@ -1,11 +1,12 @@
 package com.affinitymapper.affinitymapper.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class MatchingPerson implements BaseModel{
+public class MatchingPerson implements Serializable, BaseModel{
 
     private String name;
     private String email;

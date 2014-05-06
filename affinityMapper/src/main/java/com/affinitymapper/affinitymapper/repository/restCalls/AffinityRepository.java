@@ -48,6 +48,9 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
         try {
             AndroidHttpClient client = AndroidHttpClient.newInstance("Android", null);
             HttpUriRequest request = createRequest(params);
+            request.setHeader("Accept", "application/json");
+            request.setHeader("Content-type", "application/json");
+            
             System.out.println("Url is => " + request.getURI());
 
             System.out.println("Executing Rest call for =>" + request.getMethod());
