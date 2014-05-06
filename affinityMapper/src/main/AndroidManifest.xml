@@ -20,17 +20,20 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name="com.affinitymapper.affinitymapper.activities.RegistrationActivity"
+            android:label="@string/title_activity_registration">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.affinitymapper.affinitymapper.activities.MapsActivity"
             android:label="@string/title_activity_main" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.SignInActivity"
             android:label="@string/title_activity_sign_in" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

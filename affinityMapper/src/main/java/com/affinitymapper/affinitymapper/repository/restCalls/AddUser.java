@@ -1,18 +1,22 @@
 package com.affinitymapper.affinitymapper.repository.restCalls;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
+import com.affinitymapper.affinitymapper.activities.RegistrationActivity;
 import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.Person;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.StringEntity;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by udeebsdev on 4/30/14.
@@ -20,8 +24,8 @@ import java.io.InputStreamReader;
 public class AddUser extends AffinityRepository {
 
 
-    public AddUser(View view) {
-        super(view);
+    public AddUser(View view, Activity activity) {
+        super(view, activity);
     }
 
     @Override
@@ -31,15 +35,9 @@ public class AddUser extends AffinityRepository {
     }
 
     @Override
-    public HttpUriRequest createRequest(Object... params) {
-        HttpPost uriRequest= new HttpPost(URL_BASE + "user/" + params[0]);
-        Person person = (Person) params[0];
-//        try {
-//             uriRequest.setEntity(new UrlEncodedFormEntity(person));
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-
+    public HttpUriRequest createRequest(Object... params) throws IOException {
+        HttpPost uriRequest= new HttpPost(URL_BASE + "user/add");
+        uriRequest.setEntity(new StringEntity(gson.toJson((Person) params[0])));
         return uriRequest;
     }
 
@@ -52,13 +50,7 @@ public class AddUser extends AffinityRepository {
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        Person person = (Person)result;
-        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
-        System.out.println(person.getEmail());
-        System.out.println(this.currentView != null ? true : false);
-        System.out.println(addressView != null ? true : false);
-        addressView.setText(person.getName());
-
+        ((RegistrationActivity) this.parentActivity).userRegistrationComplete();
         return true;
     }
 }

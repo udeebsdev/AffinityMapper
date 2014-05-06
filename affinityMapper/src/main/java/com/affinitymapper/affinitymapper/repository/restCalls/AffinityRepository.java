@@ -63,7 +63,7 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
         return null;
     }
 
-    public abstract HttpUriRequest createRequest(Object... params);
+    public abstract HttpUriRequest createRequest(Object... params) throws IOException;
 
     public abstract BaseModel parseResponse(HttpResponse response) throws IOException;
 

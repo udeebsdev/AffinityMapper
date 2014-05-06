@@ -5,26 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Display Name -->
-
-    <TextView
-        android:id="@+id/registerLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register New Account"
-        android:background="#66CCFF"
-
-        />
-
     <EditText
         android:id="@+id/displayNameEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:hint="Display Name"
-        android:layout_below="@id/registerLabel"
         />
 
     <TableLayout
@@ -37,10 +25,10 @@
             <TextView
                 android:id="@+id/interestGroupsText"
                 android:layout_below="@id/newRegistrationTable"
-                android:text="Interest Groups"
+                android:text="Interest Group"
                 android:weightSum="1.0"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:layout_marginTop="10dp"
                 />
 
@@ -63,17 +51,15 @@
                 android:text="Proximity for Alert"
                 android:weightSum="1.0"
                 android:gravity="center"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:layout_marginTop="20dp"
                 />
             <NumberPicker
                 android:id="@+id/proximityPicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:weightSum="1.0"
                 android:layout_toRightOf="@id/proximityText"
                 android:layout_below="@id/interestGroupsSpinner"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="30dp"
                 />
@@ -84,7 +70,7 @@
                 android:text="miles"
                 android:weightSum="1.0"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 />
@@ -108,7 +94,8 @@
         android:layout_toRightOf="@id/proximityCheckbox"
         android:layout_below="@id/newRegistrationTable"
         android:text="Proximity Notifications"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="25dp"
+        android:textSize="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         />
@@ -133,9 +120,8 @@
         android:layout_marginTop="35dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:textSize="15dp"
         />
-
-
 
     <Button
         android:id="@+id/nextButton"
@@ -149,5 +135,6 @@
         android:background="#C4EBFF"
         android:paddingRight="40dp"
         android:paddingLeft="40dp"
+        android:onClick="registrationFormSubmit"
         />
 </RelativeLayout>
