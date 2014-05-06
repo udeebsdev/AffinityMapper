@@ -1,10 +1,5 @@
 package com.affinitymapper.affinitymapper.activities;
 
-import com.google.android.gms.auth.GoogleAuthException;
-import com.google.android.gms.auth.GoogleAuthUtil;
-import com.google.android.gms.auth.UserRecoverableAuthException;
-import com.google.android.gms.common.ConnectionResult;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -13,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.affinitymapper.affinitymapper.R;
+import com.google.android.gms.auth.GoogleAuthException;
+import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.auth.UserRecoverableAuthException;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -71,6 +70,7 @@ public class SignInActivity extends Activity implements View.OnClickListener,
 
             if (mSignInClicked) {
                 resolveSignInError();
+                System.out.println("onConnectionFailed");
             }
         }
     }
@@ -83,6 +83,7 @@ public class SignInActivity extends Activity implements View.OnClickListener,
 
     @Override
     public void onClick(View view) {
+        System.out.println("onClick");
         if (view.getId() == R.id.signInButton
                 && !mGoogleApiClient.isConnecting()) {
             mSignInClicked = true;
@@ -94,15 +95,17 @@ public class SignInActivity extends Activity implements View.OnClickListener,
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         if (requestCode == RC_SIGN_IN) {
             if (!mGoogleApiClient.isConnecting()) {
+                System.out.println("onActivityResult isConnecting");
                 mGoogleApiClient.connect();
             }
             if (responseCode != RESULT_OK) {
+                System.out.println("onActivityResult RESULT NOT OK");
                 mSignInClicked = false;
             }
             mIntentInProgress = false;
 
             if (mGoogleApiClient.isConnected()) {
-
+                System.out.println("onActivityResult isConnected");
                 String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
                 Intent mainIntent = new Intent(this, MainActivity.class);
@@ -113,6 +116,7 @@ public class SignInActivity extends Activity implements View.OnClickListener,
                 resolveSignInError();
             }
         } else if (requestCode == RC_SIGN_OUT) {
+            System.out.println("onActivityResult request code sign out");
             if (mGoogleApiClient.isConnected()) {
                 Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
                 Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient)
@@ -123,6 +127,9 @@ public class SignInActivity extends Activity implements View.OnClickListener,
                             }
                         });
             }
+
+            System.out.println("onActivityResult disconnect");
+
             mGoogleApiClient.disconnect();
             mGoogleApiClient.connect();
         }
@@ -144,16 +151,22 @@ public class SignInActivity extends Activity implements View.OnClickListener,
     }
 
     private void resolveSignInError() {
+        System.out.println("resolveSignInError");
+
         //This is a hack. For some reason mConnectionResult is always null when the app is not freshly installed.
         if (mConnectionResult == null && mGoogleApiClient.isConnected()) {
+            System.out.println("resolveSignInError connection result is null");
             Intent mainIntent = new Intent(this, MainActivity.class);
             mainIntent.putExtra("accountName", Plus.AccountApi.getAccountName(mGoogleApiClient));
             startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
         } else if (mConnectionResult.hasResolution()) {
+            System.out.println("resolveSignInError has resolution");
             try {
                 mIntentInProgress = true;
                 mConnectionResult.startResolutionForResult(this, RC_SIGN_IN);
             } catch (IntentSender.SendIntentException e) {
+                System.out.println("resolveSignInError error carught" + e.getLocalizedMessage());
+                e.printStackTrace();
                 mIntentInProgress = false;
                 mGoogleApiClient.connect();
             }
@@ -171,13 +184,17 @@ public class SignInActivity extends Activity implements View.OnClickListener,
                     scopes                                          // String scope
             );
         } catch (IOException transientEx) {
+            transientEx.printStackTrace();
             return;
         } catch (UserRecoverableAuthException e) {
+            e.printStackTrace();
             startActivityForResult(e.getIntent(), RC_SIGN_IN);
             return;
         } catch (GoogleAuthException authEx) {
+            authEx.printStackTrace();
             return;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
