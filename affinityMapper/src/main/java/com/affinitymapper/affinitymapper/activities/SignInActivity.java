@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.affinitymapper.affinitymapper.R;
+import com.affinitymapper.affinitymapper.repository.restCalls.AddUser;
+import com.affinitymapper.affinitymapper.repository.restCalls.GetUserInfoAfterSignIn;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.UserRecoverableAuthException;
@@ -18,6 +20,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
 
 import java.io.IOException;
 
@@ -27,6 +30,7 @@ public class SignInActivity extends Activity implements View.OnClickListener,
     private static final int RC_SIGN_IN = 10;
     private static final int RC_MAIN_ACTIVITY = 11;
     private static final int RC_SIGN_OUT = 12;
+    private static final int RC_REG_ACTIVITY = 13;
 
     private GoogleApiClient mGoogleApiClient;
     private boolean mIntentInProgress;
@@ -106,12 +110,7 @@ public class SignInActivity extends Activity implements View.OnClickListener,
 
             if (mGoogleApiClient.isConnected()) {
                 System.out.println("onActivityResult isConnected");
-                String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
-
-                Intent mainIntent = new Intent(this, MainActivity.class);
-                mainIntent.putExtra("accountName", accountName);
-                this.startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
-
+                launchAppActivities();
             } else {
                 resolveSignInError();
             }
@@ -135,6 +134,38 @@ public class SignInActivity extends Activity implements View.OnClickListener,
         }
     }
 
+    private void launchAppActivities() {
+        if (Plus.AccountApi.getAccountName(mGoogleApiClient) != null) {
+            System.out.println("launching activity");
+            Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+            // String userId = currentPerson.getId();
+            String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
+            new GetUserInfoAfterSignIn(null, this).execute(accountName);
+        }
+    }
+
+    public void launchMainActivity() {
+        System.out.println("Launching Main Activity");
+        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+        String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
+        String userId = currentPerson.getId();
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        mainIntent.putExtra("accountName", accountName);
+        //mainIntent.putExtra("userId", userId);
+        this.startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
+    }
+
+    public void launchRegistrationActivity() {
+        System.out.println("Launching Registration activity");
+        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+        String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
+        String userId = currentPerson.getId();
+        Intent registrationIntent = new Intent(this, RegistrationActivity.class);
+        registrationIntent.putExtra("accountName", accountName);
+        //registrationIntent.putExtra("userId", userId);
+        this.startActivityForResult(registrationIntent, RC_REG_ACTIVITY);
+    }
+
     private void getAccessTokenInAsyncTask() {
         AsyncTask task = new AsyncTask() {
             @Override
@@ -156,9 +187,7 @@ public class SignInActivity extends Activity implements View.OnClickListener,
         //This is a hack. For some reason mConnectionResult is always null when the app is not freshly installed.
         if (mConnectionResult == null && mGoogleApiClient.isConnected()) {
             System.out.println("resolveSignInError connection result is null");
-            Intent mainIntent = new Intent(this, MainActivity.class);
-            mainIntent.putExtra("accountName", Plus.AccountApi.getAccountName(mGoogleApiClient));
-            startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
+            launchAppActivities();
         } else if (mConnectionResult.hasResolution()) {
             System.out.println("resolveSignInError has resolution");
             try {
