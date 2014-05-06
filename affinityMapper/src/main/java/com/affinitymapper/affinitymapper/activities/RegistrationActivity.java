@@ -35,6 +35,7 @@ public class RegistrationActivity extends Activity {
         Person person = new Person();
 
         String name = ((EditText) findViewById(R.id.displayNameEdit)).getText().toString();
+        person.setEmail(name);
         person.setName(name);
 
         String group = ((Spinner) findViewById(R.id.interestGroupsSpinner)).getSelectedItem().toString();

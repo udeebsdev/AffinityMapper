@@ -54,7 +54,12 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
             HttpResponse response = client.execute(request);
             System.out.println("Rest call status code is =>" + response.getStatusLine().getStatusCode());
             BaseModel baseModel = parseResponse(response);
-            System.out.println("Response parsed to =>" + baseModel.getClass());
+            if(baseModel!=null)
+            {
+                System.out.println("Response parsed to =>" + baseModel.getClass());
+            }else{
+                System.out.println("Response parsed to =>");
+            }
             client.close();
             return baseModel;
         } catch (Exception ex) {
@@ -72,7 +77,12 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
     @Override
     protected void onPostExecute(BaseModel result){
         super.onPostExecute(result);
-        System.out.println("Post execute running on =>" + result.getClass());
+        if(result != null)
+        {
+            System.out.println("Post execute running on =>" + result.getClass());
+        }else{
+            System.out.println("Post execute running after POST");
+        }
 
         System.out.println("Post execute finished. Status is =>" + runAfterSuccessfulCall(result));
     };

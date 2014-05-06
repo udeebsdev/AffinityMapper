@@ -13,6 +13,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,15 +39,17 @@ public class AddUser extends AffinityRepository {
     @Override
     public HttpUriRequest createRequest(Object... params) throws IOException {
         HttpPost uriRequest= new HttpPost(URL_BASE + "user/add");
-        uriRequest.setEntity(new StringEntity(gson.toJson((Person) params[0])));
+        System.out.println(gson.toJson((Person) params[0]));
+        StringEntity se = new StringEntity(gson.toJson((Person) params[0]));
+        uriRequest.setEntity(se);
+        uriRequest.setHeader("Accept", "application/json");
+        uriRequest.setHeader("Content-type", "application/json");
         return uriRequest;
     }
 
     @Override
     public BaseModel parseResponse(HttpResponse response) throws IOException {
-        return gson.fromJson(
-                new InputStreamReader(response.getEntity().getContent()),
-                Person.class);
+        return null;
     }
 
     @Override
