@@ -1,12 +1,15 @@
 package com.affinitymapper.affinitymapper.repository.restCalls;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
+import com.affinitymapper.affinitymapper.activities.MainActivity;
 import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.MatchingPersonList;
+import com.google.android.gms.plus.Plus;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -52,12 +55,16 @@ public class GetNearByUsersCall extends AffinityRepository {
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        MatchingPersonList person = (MatchingPersonList) result;
-        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
-        System.out.println(person.getMatchingPersons().get(0).getEmail());
-        System.out.println(this.currentView != null ? true : false);
-        System.out.println(addressView != null ? true : false);
-        addressView.setText(person.getMatchingPersons().get(0).getEmail() + " " + person.getMatchingPersons().get(0).getLatitude());
+        MatchingPersonList personList = (MatchingPersonList) result;
+//        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
+//        System.out.println(person.getMatchingPersons().get(0).getEmail());
+//        System.out.println(this.currentView != null ? true : false);
+//        System.out.println(addressView != null ? true : false);
+//        addressView.setText(person.getMatchingPersons().get(0).getEmail() + " " + person.getMatchingPersons().get(0).getLatitude());
+
+        Intent mapIntent = new Intent(this.parentActivity, MainActivity.class);
+        mapIntent.putExtra("personList", personList);
+        this.parentActivity.startActivity(mapIntent);
 
         return true;
     }
