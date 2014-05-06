@@ -57,11 +57,6 @@ public class GetNearByUsersCall extends AffinityRepository {
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
         MatchingPersonList personList = (MatchingPersonList) result;
-//        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
-//        System.out.println(person.getMatchingPersons().get(0).getEmail());
-//        System.out.println(this.currentView != null ? true : false);
-//        System.out.println(addressView != null ? true : false);
-//        addressView.setText(person.getMatchingPersons().get(0).getEmail() + " " + person.getMatchingPersons().get(0).getLatitude());
 
         Intent mapIntent = new Intent(this.parentActivity, MapsActivity.class);
         mapIntent.putExtra("personList", personList);

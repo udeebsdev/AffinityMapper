@@ -19,7 +19,7 @@ import java.io.IOException;
  */
 public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseModel> implements IAffinityRepository {
 
-   protected String URL_BASE = "https://teamflyte-affinitymapper.appspot.com/_ah/api/affinitymapper/v1/";
+    protected String URL_BASE = "https://teamflyte-affinitymapper.appspot.com/_ah/api/affinitymapper/v1/";
 
     protected View currentView;
 
@@ -50,17 +50,16 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
             HttpUriRequest request = createRequest(params);
             request.setHeader("Accept", "application/json");
             request.setHeader("Content-type", "application/json");
-            
+
             System.out.println("Url is => " + request.getURI());
 
             System.out.println("Executing Rest call for =>" + request.getMethod());
             HttpResponse response = client.execute(request);
             System.out.println("Rest call status code is =>" + response.getStatusLine().getStatusCode());
             BaseModel baseModel = parseResponse(response);
-            if(baseModel!=null)
-            {
+            if (baseModel != null) {
                 System.out.println("Response parsed to =>" + baseModel.getClass());
-            }else{
+            } else {
                 System.out.println("Response parsed to =>");
             }
             client.close();
@@ -78,15 +77,16 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
     public abstract boolean runAfterSuccessfulCall(BaseModel result);
 
     @Override
-    protected void onPostExecute(BaseModel result){
+    protected void onPostExecute(BaseModel result) {
         super.onPostExecute(result);
-        if(result != null)
-        {
+        if (result != null) {
             System.out.println("Post execute running on =>" + result.getClass());
-        }else{
+        } else {
             System.out.println("Post execute running after POST");
         }
 
         System.out.println("Post execute finished. Status is =>" + runAfterSuccessfulCall(result));
-    };
+    }
+
+    ;
 }
