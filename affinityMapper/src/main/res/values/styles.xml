@@ -5,4 +5,29 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="descBar" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#66CCFF</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
+    <style name="userProfileTextFields" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="userProfileEditFields" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+
 </resources>

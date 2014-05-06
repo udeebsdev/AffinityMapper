@@ -1,7 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/signInLabel"
+        style="@style/descBar"
+        android:text="User Profile Setting"
+        />
+
+    <ImageView
+        android:id="@+id/userProfilePic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/contact_profile"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userProfilePic">
+        <RelativeLayout
+            android:id="@+id/editableFieldsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+          <TableLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+            <!--Name-->
+              <TableRow>
+            <TextView
+                style="@style/userProfileTextFields"
+                android:id="@+id/nameText"
+                android:text="Name"
+                />
+            <EditText
+                style="@style/userProfileEditFields"
+                android:id="@+id/nameEdit"
+                />
+              </TableRow>
+
+              <TableRow
+                  android:layout_marginTop="20dp">
+            <!--Interest-->
+            <TextView
+                style="@style/userProfileTextFields"
+                android:id="@+id/interestGroupText"
+                android:text="Interest Groups"
+                android:layout_below="@id/nameText"
+                />
+
+            <Spinner
+                style="@style/userProfileEditFields"
+                android:id="@+id/interestSpinner"
+                android:layout_below="@id/nameEdit"
+                android:entries="@array/interestOptions"
+                />
+              </TableRow>
+
+              <!--Proximity-->
+              <TableRow>
+            <TextView
+                style="@style/userProfileTextFields"
+                android:id="@+id/proximityText"
+                android:text="Proximity"
+                android:layout_below="@id/interestGroupText"
+                />
+            <EditText
+                style="@style/userProfileEditFields"
+                android:id="@+id/proximityEdit"
+                android:layout_below="@id/interestSpinner"
+                />
+              </TableRow>
+
+            <!--Chat Request Toggle-->
+              <TableRow
+                  android:layout_marginTop="20dp">
+            <TextView
+                style="@style/userProfileTextFields"
+                android:id="@+id/chatToggleText"
+                android:text="Chat Toggle"
+                android:layout_below="@id/proximityText"
+                />
+            <CheckBox
+                style="@style/userProfileEditFields"
+                android:id="@+id/chatCheckBox"
+                />
+              </TableRow>
+
+            <!--Proximity Notification-->
+              <TableRow
+                  android:layout_marginTop="20dp"
+                  android:layout_marginBottom="20dp">
+                  <TextView
+                      style="@style/userProfileTextFields"
+                      android:id="@+id/proximityNotificationText"
+                      android:text="Proximity Notification"
+                      android:layout_below="@id/proximityText"
+                      />
+                  <CheckBox
+                      style="@style/userProfileEditFields"
+                      android:id="@+id/proximityNotificationCheckBox"
+                      />
+              </TableRow>
+
+              <TableRow>
+                  <Button
+                      style="@style/userProfileTextFields"
+                      android:id="@+id/saveButton"
+                      android:layout_below="@id/proximityText"
+                      android:text="Save"
+                      android:onClick="save"
+                      />
+
+                  <Button
+                      style="@style/userProfileEditFields"
+                      android:layout_below="@id/proximityEdit"
+                      android:text="Logout"
+                      android:onClick="logOut"
+                      android:layout_marginTop="10dp"
+                      />
+              </TableRow>
+
+          </TableLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

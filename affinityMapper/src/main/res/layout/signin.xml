@@ -7,10 +7,8 @@
 
     <TextView
         android:id="@+id/signInLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/descBar"
         android:text="Welcome to Affinity Mapper"
-        android:background="#66CCFF"
         />
 
     <com.google.android.gms.common.SignInButton
