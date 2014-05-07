@@ -15,6 +15,19 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/updateLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Update Location"
+        android:background="#9DDEFF"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:layout_marginTop="75dp"
+        android:onClick="updateLocationClicked"
+        />
+
+    <Button
         android:id="@+id/sampleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

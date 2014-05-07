@@ -1,5 +1,6 @@
 package com.affinitymapper.affinitymapper.repository.restCalls;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,8 +21,8 @@ import java.io.InputStreamReader;
 public class UpdateUser extends AffinityRepository {
 
 
-    public UpdateUser(View view) {
-        super(view);
+    public UpdateUser(View view, Activity activity) {
+        super(view, activity);
     }
 
     @Override

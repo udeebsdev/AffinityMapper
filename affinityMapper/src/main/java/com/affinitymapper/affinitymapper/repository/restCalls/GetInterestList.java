@@ -1,5 +1,6 @@
 package com.affinitymapper.affinitymapper.repository.restCalls;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,10 +21,9 @@ import java.io.InputStreamReader;
 public class GetInterestList extends AffinityRepository {
 
 
-    public GetInterestList(View view) {
-        super(view);
+    public GetInterestList(View view, Activity activity) {
+        super(view, activity);
     }
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();

@@ -1,11 +1,12 @@
 package com.affinitymapper.affinitymapper.repository.restCalls;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.model.BaseModel;
-import com.affinitymapper.affinitymapper.model.Location;
+import com.affinitymapper.affinitymapper.model.UserLocation;
 import com.affinitymapper.affinitymapper.model.Person;
 
 import org.apache.http.HttpResponse;
@@ -21,8 +22,8 @@ import java.io.InputStreamReader;
 public class GetLocation extends AffinityRepository {
 
 
-    public GetLocation(View view) {
-        super(view);
+    public GetLocation(View view, Activity activity) {
+        super(view, activity);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class GetLocation extends AffinityRepository {
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        Location person = (Location)result;
+        UserLocation person = (UserLocation)result;
         TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
         System.out.println(person.getEmail());
         System.out.println(this.currentView != null ? true : false);
