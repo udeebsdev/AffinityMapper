@@ -7,13 +7,13 @@
     <TextView
         android:id="@+id/signInLabel"
         style="@style/descBar"
-        android:text="View User Profile"
+        android:text="Profile"
         />
 
     <ImageView
         android:id="@+id/userProfilePic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@drawable/contact_profile"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="15dp"
@@ -83,9 +83,26 @@
                         android:layout_marginTop="10dp"
                         />
                 </TableRow>
+                <TableRow android:layout_marginTop="20dp">
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/emailText"
+                        android:text="Email"
+                        android:layout_below="@id/proximityText"
+                        />
+                    <TextView
+                        style="@style/userProfileEditFields"
+                        android:id="@+id/emailLabel"
+                        android:text="abc@gmail.com"
+                        android:layout_below="@id/proximityText"
+                        android:layout_marginTop="10dp"
+                        android:autoLink="email"
+                        />
+                </TableRow>
+
             </TableLayout>
 
-            <Button
+            <!--<Button
                 android:layout_height="wrap_content"
                 android:layout_width="124dp"
                 android:id="@+id/saveButton"
@@ -94,7 +111,7 @@
                 android:onClick="chat"
                 android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
-                />
+                />-->
 
         </RelativeLayout>
     </ScrollView>

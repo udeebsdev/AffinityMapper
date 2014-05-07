@@ -21,11 +21,7 @@
 
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.MainActivity"
-            android:label="@string/title_activity_registration">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/title_activity_registration" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.MapsActivity"
@@ -34,6 +30,14 @@
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.RegistrationActivity"
             android:label="@string/title_activity_sign_in" >
+        </activity>
+        <activity
+            android:name="com.affinitymapper.affinitymapper.activities.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
