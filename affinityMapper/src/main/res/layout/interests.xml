@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/interestsLabel"
+        style="@style/descBar"
+        android:text="Interests"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow
+                    style="@style/interestTableRowStyle">
+
+                    <ImageButton
+                        style="@style/interestImageButtonStyle"
+                        android:id="@+id/sportsButton"
+                        android:src="@drawable/sports"
+                        android:onClick="clickSports"
+                        />
+
+                    <ImageButton
+                        style="@style/interestImageButtonStyle"
+                        android:id="@+id/literatureButton"
+                        android:src="@drawable/literature"
+                        android:onClick="clickLiterature"
+                        />
+                </TableRow>
+
+                <TableRow
+                    style="@style/interestTableRowStyle"
+                    >
+                    <ImageButton
+                        style="@style/interestImageButtonStyle"
+                        android:id="@+id/historyButton"
+                        android:src="@drawable/history"
+                        android:onClick="clickHistory"
+                        />
+
+                    <ImageButton
+                        style="@style/interestImageButtonStyle"
+                        android:id="@+id/politicsButton"
+                        android:src="@drawable/politics"
+                        android:onClick="clickPolitics"
+                        />
+
+                </TableRow>
+            </TableLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
