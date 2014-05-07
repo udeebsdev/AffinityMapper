@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.model.UserLocation;
@@ -46,7 +47,7 @@ public class MainActivity extends Activity {
         userLocation.setLongitude(currentLocation.getLongitude());
         userLocation.setActive(true);
         //TODO populated the user id here
-        //userLocation.setEmail();
+        //userLocation.setUserId();
         new UpdateLocation(view.getRootView(), this).execute(userLocation);
     }
 

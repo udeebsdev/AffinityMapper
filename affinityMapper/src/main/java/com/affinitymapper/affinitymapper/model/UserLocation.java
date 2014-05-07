@@ -4,7 +4,7 @@ package com.affinitymapper.affinitymapper.model;
  * Created by udeebsdev on 4/30/14.
  */
 public class UserLocation implements BaseModel{
-    private String email;
+    private String userId;
     private boolean active;
     private Double latitude;
     private Double longitude;
@@ -34,11 +34,11 @@ public class UserLocation implements BaseModel{
         this.longitude = longitude;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
