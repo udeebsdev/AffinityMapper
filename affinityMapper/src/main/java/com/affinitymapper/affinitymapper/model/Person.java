@@ -5,15 +5,23 @@ import java.util.ArrayList;
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class Person implements BaseModel{
+public class Person implements BaseModel {
+    private String userId;
     private String name;
     private String email;
+    private String imageUrl;
     private boolean chatRequestToggle;
     private int proximityAlertLimit;
     private boolean proximityAlertToggle;
     private ArrayList<String> interestGroups;
 
+    public String getUserId() {
+        return userId;
+    }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getName() {
         return name;
@@ -30,6 +38,15 @@ public class Person implements BaseModel{
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 
     public boolean isChatRequestToggle() {
         return chatRequestToggle;

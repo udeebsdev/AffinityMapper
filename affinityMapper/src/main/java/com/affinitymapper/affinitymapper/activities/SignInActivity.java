@@ -138,31 +138,34 @@ public class SignInActivity extends Activity implements View.OnClickListener,
         if (Plus.AccountApi.getAccountName(mGoogleApiClient) != null) {
             System.out.println("launching activity");
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-            // String userId = currentPerson.getId();
-            String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
-            new GetUserInfoAfterSignIn(null, this).execute(accountName);
+            String userId = currentPerson.getId();
+            new GetUserInfoAfterSignIn(null, this).execute(userId);
         }
     }
 
     public void launchMainActivity() {
         System.out.println("Launching Main Activity");
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
+        String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
         String userId = currentPerson.getId();
+        String imageUrl = currentPerson.getImage().getUrl();
         Intent mainIntent = new Intent(this, MainActivity.class);
-        mainIntent.putExtra("accountName", accountName);
-        //mainIntent.putExtra("userId", userId);
+        mainIntent.putExtra("email", email);
+        mainIntent.putExtra("userId", userId);
+        mainIntent.putExtra("imageUrl", imageUrl);
         this.startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
     }
 
     public void launchRegistrationActivity() {
         System.out.println("Launching Registration activity");
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        String accountName = Plus.AccountApi.getAccountName(mGoogleApiClient);
+        String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
         String userId = currentPerson.getId();
+        String imageUrl = currentPerson.getImage().getUrl();
         Intent registrationIntent = new Intent(this, RegistrationActivity.class);
-        registrationIntent.putExtra("accountName", accountName);
-        //registrationIntent.putExtra("userId", userId);
+        registrationIntent.putExtra("email", email);
+        registrationIntent.putExtra("userId", userId);
+        registrationIntent.putExtra("imageUrl", imageUrl);
         this.startActivityForResult(registrationIntent, RC_REG_ACTIVITY);
     }
 
