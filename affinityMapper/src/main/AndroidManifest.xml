@@ -7,11 +7,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="com.affinitymapper.affinitymapper.activities.SignInActivity"
-            android:label="Sign In" >
-        </activity>
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -19,6 +14,10 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDHHdJDjoQqh92rdVRVmKxk7H_ftO2aUkc" />
 
+        <activity
+            android:name="com.affinitymapper.affinitymapper.activities.SignInActivity"
+            android:label="Sign In" >
+        </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.MainActivity"
             android:label="@string/title_activity_registration" >
@@ -34,8 +33,13 @@
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.affinitymapper.affinitymapper.activities.LoginActivity"
+            android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

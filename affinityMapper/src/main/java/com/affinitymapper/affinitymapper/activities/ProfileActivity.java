@@ -63,7 +63,9 @@ public class ProfileActivity extends Activity {
 
     public void renderProfile(){
         ImageView imageView = (ImageView)findViewById(R.id.userProfilePic);
-        String imageUrl = this.currentPerson.getImageUrl();
+        String imageUrl  = this.currentPerson.getImageUrl().substring(0,
+                this.currentPerson.getImageUrl().length() - 2)
+                + 400;
         URL url;
 
         try {

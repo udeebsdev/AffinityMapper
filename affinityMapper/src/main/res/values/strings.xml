@@ -24,5 +24,6 @@
     <string name="otherUserInterest">Sports</string>
     <string name="otherUserProximity">10 miles</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
 
 </resources>
