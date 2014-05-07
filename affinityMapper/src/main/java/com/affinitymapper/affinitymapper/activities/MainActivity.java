@@ -12,15 +12,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
+import com.affinitymapper.affinitymapper.Utilities.LocationUtilities;
 import com.affinitymapper.affinitymapper.model.UserLocation;
 import com.affinitymapper.affinitymapper.repository.restCalls.GetNearByUsersCall;
 import com.affinitymapper.affinitymapper.repository.restCalls.UpdateLocation;
 
 
 public class MainActivity extends Activity {
-
-    Location currentLocation;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +37,14 @@ public class MainActivity extends Activity {
 
     public void updateLocationClicked(View view) {
         System.out.println("Button Clicked " + view.getId());
-        //new GetUserCall(view.getRootView()).execute("udeeb");
-        //new GetNearByUsersCall(view.getRootView(), this).execute("udeeb");
-        this._getLocation();
+        LocationUtilities locationHelper = LocationUtilities.getLocationUtilities(this);
+        Location currentLocation = locationHelper.getCurrentLocation();
+
         UserLocation userLocation = new UserLocation();
         userLocation.setLatitude(currentLocation.getLatitude());
         userLocation.setLongitude(currentLocation.getLongitude());
         userLocation.setActive(true);
+        System.out.println("Last known Users Location to be updated is => \n Lat : "+ currentLocation.getLatitude() +" Lon is : "+currentLocation.getLongitude());
         //TODO populated the user id here
         //userLocation.setUserId();
         new UpdateLocation(view.getRootView(), this).execute(userLocation);
@@ -72,36 +71,5 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    private void _getLocation() {
-        // Get the location manager
-        LocationManager locationManager = (LocationManager)
-                getSystemService(LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        String bestProvider = locationManager.getBestProvider(criteria, false);
-        currentLocation = locationManager.getLastKnownLocation(bestProvider);
-
-        LocationListener loc_listener = new LocationListener() {
-
-            public void onLocationChanged(Location l) {
-                currentLocation = l;
-            }
-
-            public void onProviderEnabled(String p) {
-            }
-
-            public void onProviderDisabled(String p) {
-            }
-
-            public void onStatusChanged(String p, int status, Bundle extras) {
-            }
-        };
-        locationManager
-                .requestLocationUpdates(bestProvider, 0, 0, loc_listener);
-        currentLocation = locationManager.getLastKnownLocation(bestProvider);
-
-
     }
 }

@@ -2,6 +2,7 @@ package com.affinitymapper.affinitymapper.activities;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.Display;
 import android.widget.Toast;
 
 import com.affinitymapper.affinitymapper.R;
+import com.affinitymapper.affinitymapper.Utilities.LocationUtilities;
 import com.affinitymapper.affinitymapper.model.MatchingPerson;
 import com.affinitymapper.affinitymapper.model.MatchingPersonList;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -74,9 +76,12 @@ public class MapsActivity extends FragmentActivity {
     private void setUpMap() {
         Intent currentIntent = getIntent();
 
+        LocationUtilities locationHelper = LocationUtilities.getLocationUtilities(this);
+        Location currentUserLocation = locationHelper.getCurrentLocation();
+
         MatchingPerson currentUser = new MatchingPerson();
-        currentUser.setLatitude(44.973);
-        currentUser.setLongitude(-93.232);
+        currentUser.setLatitude(currentUserLocation.getLatitude());
+        currentUser.setLongitude(currentUserLocation.getLongitude());
 
         //(MatchingPerson) currentIntent.getSerializableExtra("currentPerson");
         float zoomLevel = calculateZoomLevel(10);
@@ -113,7 +118,6 @@ public class MapsActivity extends FragmentActivity {
             metersPerPixel /= 2;
             ++zoomLevel;
         }
-        Log.i("ADNAN", "zoom level = " + zoomLevel);
         return zoomLevel;
     }
 }
