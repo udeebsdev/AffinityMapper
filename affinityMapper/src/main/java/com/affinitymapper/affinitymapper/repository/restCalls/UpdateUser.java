@@ -5,12 +5,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
+import com.affinitymapper.affinitymapper.activities.RegistrationActivity;
 import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.Person;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.StringEntity;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -32,26 +35,24 @@ public class UpdateUser extends AffinityRepository {
     }
 
     @Override
-    public HttpUriRequest createRequest(Object... params) {
-        return new HttpGet(URL_BASE + "getNearByUsers/" + "udeeb");
+    public HttpUriRequest createRequest(Object... params) throws IOException {
+        HttpPost uriRequest= new HttpPost(URL_BASE + "user/update/"+ ((Person)params[0]).getUserId());
+        System.out.println(gson.toJson((Person) params[0]));
+        StringEntity se = new StringEntity(gson.toJson((Person) params[0]));
+        uriRequest.setEntity(se);
+
+        return uriRequest;
     }
 
     @Override
     public BaseModel parseResponse(HttpResponse response) throws IOException {
-        return gson.fromJson(
-                new InputStreamReader(response.getEntity().getContent()),
-                Person.class);
+        return null;
     }
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        Person person = (Person)result;
-        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
-        System.out.println(person.getEmail());
-        System.out.println(this.currentView != null ? true : false);
-        System.out.println(addressView != null ? true : false);
-        addressView.setText(person.getName());
-
+        //Return back to parent activity
+        //((RegistrationActivity) this.parentActivity).userRegistrationComplete();
         return true;
     }
 }
