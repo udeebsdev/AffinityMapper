@@ -8,12 +8,29 @@ import java.util.ArrayList;
  */
 public class MatchingPerson implements Serializable, BaseModel{
 
+    private String userId;
     private String name;
     private String email;
+    private String imageUrl;
     private ArrayList<String> interestGroups;
     private Double latitude;
     private Double longitude;
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
     public String getName() {
         return name;
     }

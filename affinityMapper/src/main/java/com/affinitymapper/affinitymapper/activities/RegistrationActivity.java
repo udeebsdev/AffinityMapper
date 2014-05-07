@@ -33,9 +33,11 @@ public class RegistrationActivity extends Activity {
 
     public void registrationFormSubmit(View view) {
         Person person = new Person();
+        person.setUserId((String) getIntent().getSerializableExtra("userId"));
+        person.setEmail((String) getIntent().getSerializableExtra("email"));
+        person.setImageUrl((String) getIntent().getSerializableExtra("imageUrl"));
 
         String name = ((EditText) findViewById(R.id.displayNameEdit)).getText().toString();
-        person.setEmail(name);
         person.setName(name);
 
         String group = ((Spinner) findViewById(R.id.interestGroupsSpinner)).getSelectedItem().toString();
@@ -57,7 +59,8 @@ public class RegistrationActivity extends Activity {
 
     public boolean userRegistrationComplete()
     {
-        Toast.makeText(getApplicationContext(), "Registration Completed", Toast.LENGTH_LONG).show();
+        String userId = (String) getIntent().getSerializableExtra("userId");
+        Toast.makeText(getApplicationContext(), "Registration Completed for " + userId, Toast.LENGTH_LONG).show();
         return true;
     }
 }

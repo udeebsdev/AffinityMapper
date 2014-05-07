@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <EditText
         android:id="@+id/displayNameEdit"
         android:layout_width="match_parent"
@@ -20,19 +28,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/displayNameEdit"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:paddingBottom="30dp">
+
         <TableRow>
             <TextView
+                style="@style/userProfileTextFields"
                 android:id="@+id/interestGroupsText"
-                android:layout_below="@id/newRegistrationTable"
                 android:text="Interest Group"
-                android:weightSum="1.0"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:layout_marginTop="10dp"
                 />
 
             <Spinner
+                style="@style/userProfileEditFields"
                 android:id="@+id/interestGroupsSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,87 +49,54 @@
                 android:layout_below="@id/newRegistrationTable"
                 android:entries="@array/interestOptions"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
                 />
         </TableRow>
-        <TableRow>
+
+        <TableRow
+            android:layout_marginTop="20dp">
             <TextView
+                style="@style/userProfileTextFields"
                 android:id="@+id/proximityText"
                 android:layout_below="@id/interestGroupsText"
-                android:text="Proximity for Alert"
+                android:text="Proximity for Alert (miles)"
                 android:weightSum="1.0"
                 android:gravity="center"
-                android:textSize="15dp"
-                android:layout_marginTop="20dp"
                 />
             <NumberPicker
+                style="@style/userProfileEditFields"
                 android:id="@+id/proximityPicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/proximityText"
                 android:layout_below="@id/interestGroupsSpinner"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                />
-            <TextView
-                android:id="@+id/proximityMilesText"
-                android:layout_below="@id/interestGroupsSpinner"
-                android:layout_toRightOf="@id/proximityPicker"
-                android:text="miles"
-                android:weightSum="1.0"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
                 />
         </TableRow>
+
+        <TableRow
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                style="@style/userProfileTextFields"
+                android:id="@+id/proximityCheckboxText"
+                android:text="Proximity Notifications"
+                />
+            <CheckBox
+                style="@style/userProfileEditFields"
+                android:id="@+id/proximityCheckbox"
+                android:layout_below="@id/newRegistrationTable"
+                />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="20dp">
+            <TextView
+                style="@style/userProfileTextFields"
+                android:id="@+id/chatRequestText"
+                android:text="Accept Chat Requests"
+                />
+            <CheckBox
+                style="@style/userProfileEditFields"
+                android:id="@+id/chatRequestCheckbox"
+                />
+        </TableRow>
+
     </TableLayout>
-
-    <CheckBox
-        android:id="@+id/proximityCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/newRegistrationTable"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        />
-
-    <TextView
-        android:id="@+id/proximityCheckboxText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/proximityCheckbox"
-        android:layout_below="@id/newRegistrationTable"
-        android:text="Proximity Notifications"
-        android:layout_marginTop="25dp"
-        android:textSize="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        />
-
-    <CheckBox
-        android:id="@+id/chatRequestCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/proximityCheckbox"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        />
-
-    <TextView
-        android:id="@+id/chatRequestText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/chatRequestCheckbox"
-        android:layout_below="@id/proximityCheckboxText"
-        android:text="Accept Chat Requests"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textSize="15dp"
-        />
 
     <Button
         android:id="@+id/nextButton"
@@ -131,10 +106,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:text="Save"
-        android:layout_marginTop="16dp"
         android:background="#C4EBFF"
         android:paddingRight="40dp"
         android:paddingLeft="40dp"
         android:onClick="registrationFormSubmit"
+        android:layout_below="@id/newRegistrationTable"
+        android:layout_marginTop="20dp"
         />
+    </RelativeLayout>
+    </ScrollView>
+
 </RelativeLayout>

@@ -24,9 +24,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        String accountName = (String) getIntent().getSerializableExtra("accountName");
-//        TextView sampleText = (TextView) this.findViewById(R.id.sampleText);
-//        sampleText.setText("Logged in as " + accountName);
+        String email = (String) getIntent().getSerializableExtra("email");
+        TextView sampleText = (TextView) this.findViewById(R.id.sampleText);
+        sampleText.setText("Logged in as " + email);
     }
 
     @Override
@@ -52,8 +52,7 @@ public class MainActivity extends Activity {
 
     public void sampleButtonClicked(View view) {
         System.out.println("Button Clicked " + view.getId());
-        //new GetUserCall(view.getRootView()).execute("udeeb");
-        new GetNearByUsersCall(view.getRootView(), this).execute("udeeb");
+        new GetNearByUsersCall(view.getRootView(), this).execute((String) getIntent().getSerializableExtra("userId"));
     }
 
     public void signOutButtonClicked(View view) {

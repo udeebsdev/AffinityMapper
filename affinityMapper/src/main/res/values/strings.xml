@@ -21,4 +21,8 @@
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_sign_in">Affinity Mapper</string>
 
+    <string name="otherUserName">John Adams</string>
+    <string name="otherUserInterest">Sports</string>
+    <string name="otherUserProximity">10 miles</string>
+
 </resources>

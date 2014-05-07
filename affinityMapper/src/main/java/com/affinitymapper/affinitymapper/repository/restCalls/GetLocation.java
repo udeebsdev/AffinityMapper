@@ -48,7 +48,7 @@ public class GetLocation extends AffinityRepository {
     public boolean runAfterSuccessfulCall(BaseModel result) {
         UserLocation person = (UserLocation)result;
         TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
-        System.out.println(person.getEmail());
+        System.out.println(person.getUserId());
         System.out.println(this.currentView != null ? true : false);
         System.out.println(addressView != null ? true : false);
         addressView.setText(person.getLatitude().toString());

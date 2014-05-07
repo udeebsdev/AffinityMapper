@@ -14,7 +14,7 @@
 
     <style name="userProfileTextFields" parent="android:TextAppearance.DeviceDefault">
         <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginLeft">50dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_width">wrap_content</item>
@@ -22,7 +22,7 @@
     </style>
 
     <style name="userProfileEditFields" parent="android:TextAppearance.DeviceDefault">
-        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">30dp</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_width">wrap_content</item>

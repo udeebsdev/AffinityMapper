@@ -10,4 +10,93 @@
         android:text="View User Profile"
         />
 
+    <ImageView
+        android:id="@+id/userProfilePic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/contact_profile"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userProfilePic">
+        <RelativeLayout
+            android:id="@+id/editableFieldsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TableLayout
+                android:id="@+id/profileViewTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--Name-->
+                <TableRow>
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/nameText"
+                        android:text="Name"
+                        />
+                    <TextView
+                        style="@style/userProfileEditFields"
+                        android:id="@+id/nameEdit"
+                        android:text="@string/otherUserName"
+                        android:layout_marginTop="10dp"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="20dp">
+                    <!--Interest-->
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/interestGroupText"
+                        android:text="Interest Groups"
+                        android:layout_below="@id/nameText"
+                        />
+
+                    <TextView
+                        style="@style/userProfileEditFields"
+                        android:id="@+id/interestView"
+                        android:text="@string/otherUserInterest"
+                        android:layout_marginTop="10dp"
+                        />
+                </TableRow>
+
+                <!--Proximity-->
+                <TableRow
+                    android:layout_marginTop="20dp">
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/proximityText"
+                        android:text="Proximity"
+                        android:layout_below="@id/interestGroupText"
+                        />
+                    <TextView
+                        style="@style/userProfileEditFields"
+                        android:id="@+id/proximityView"
+                        android:text="@string/otherUserProximity"
+                        android:layout_below="@id/interestGroupText"
+                        android:layout_marginTop="10dp"
+                        />
+                </TableRow>
+            </TableLayout>
+
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="124dp"
+                android:id="@+id/saveButton"
+                android:layout_below="@id/profileViewTable"
+                android:text="Chat"
+                android:onClick="chat"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
 </RelativeLayout>
