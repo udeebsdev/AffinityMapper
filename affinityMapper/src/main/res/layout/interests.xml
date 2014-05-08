@@ -27,14 +27,14 @@
                         style="@style/interestImageButtonStyle"
                         android:id="@+id/sportsButton"
                         android:src="@drawable/sports"
-                        android:onClick="clickSports"
+                        android:onClick="sportsClicked"
                         />
 
                     <ImageButton
                         style="@style/interestImageButtonStyle"
                         android:id="@+id/literatureButton"
                         android:src="@drawable/literature"
-                        android:onClick="clickLiterature"
+                        android:onClick="literatureClick"
                         />
                 </TableRow>
 
@@ -45,14 +45,14 @@
                         style="@style/interestImageButtonStyle"
                         android:id="@+id/historyButton"
                         android:src="@drawable/history"
-                        android:onClick="clickHistory"
+                        android:onClick="historyClick"
                         />
 
                     <ImageButton
                         style="@style/interestImageButtonStyle"
                         android:id="@+id/politicsButton"
                         android:src="@drawable/politics"
-                        android:onClick="clickPolitics"
+                        android:onClick="PoliticsClick"
                         />
 
                 </TableRow>

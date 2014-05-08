@@ -76,10 +76,18 @@ public class MapsActivity extends FragmentActivity {
     private void setUpMap() {
         Intent currentIntent = getIntent();
 
+        //TODO replace with a real user object
+        String userId = ((String) getIntent().getSerializableExtra("userId"));
+        String email = ((String) getIntent().getSerializableExtra("email"));
+        String imageUrl = ((String) getIntent().getSerializableExtra("imageUrl"));
+        String interest = ((String) getIntent().getSerializableExtra("interest"));
+
+
         LocationUtilities locationHelper = LocationUtilities.getLocationUtilities(this);
         Location currentUserLocation = locationHelper.getCurrentLocation();
 
         MatchingPerson currentUser = new MatchingPerson();
+        currentUser.setUserId(userId);
         currentUser.setLatitude(currentUserLocation.getLatitude());
         currentUser.setLongitude(currentUserLocation.getLongitude());
 

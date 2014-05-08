@@ -58,7 +58,7 @@ public class GetUserInfoAfterSignIn extends AffinityRepository {
             ((LoginActivity) this.parentActivity).launchRegistrationActivity();
         }
         else{
-            ((LoginActivity) this.parentActivity).launchMainActivity();
+            ((LoginActivity) this.parentActivity).launchInterestsActivity();
         }
         return true;
     }

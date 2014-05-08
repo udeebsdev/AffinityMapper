@@ -42,6 +42,9 @@ public class LoginActivity extends Activity implements View.OnClickListener,
     private static final int RC_MAIN_ACTIVITY = 11;
     private static final int RC_SIGN_OUT = 12;
     private static final int RC_REG_ACTIVITY = 13;
+    private static final int RC_INT_ACTIVITY =14;
+    private static final int RC_MAP_ACTIVITY =15;
+
     // Logcat tag
     private static final String TAG = "MainActivity";
 
@@ -270,6 +273,19 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         mainIntent.putExtra("userId", userId);
         mainIntent.putExtra("imageUrl", imageUrl);
         this.startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
+    }
+
+    public void launchInterestsActivity() {
+        System.out.println("Launching Interests Activity");
+        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+        String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
+        String userId = currentPerson.getId();
+        String imageUrl = currentPerson.getImage().getUrl();
+        Intent mainIntent = new Intent(this, Interests.class);
+        mainIntent.putExtra("email", email);
+        mainIntent.putExtra("userId", userId);
+        mainIntent.putExtra("imageUrl", imageUrl);
+        this.startActivityForResult(mainIntent, RC_INT_ACTIVITY);
     }
 
     public void launchRegistrationActivity() {

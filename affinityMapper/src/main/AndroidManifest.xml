@@ -16,7 +16,7 @@
 
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.MainActivity"
-            android:label="@string/title_activity_registration" >
+            android:label="Main" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.MapsActivity"
@@ -29,6 +29,10 @@
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.affinitymapper.affinitymapper.activities.Interests"
+            android:label="Interests Page" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.LoginActivity"
