@@ -33,19 +33,19 @@ public class ProfileActivity extends Activity {
 
         setContentView(R.layout.profile_view);
 
-        //this.currentPerson = (MatchingPerson) getIntent().getSerializableExtra("matchingPerson");
+        this.currentPerson = (MatchingPerson) getIntent().getSerializableExtra("matchingPerson");
 
         //TODO: remove mock data
-        MatchingPerson p = new MatchingPerson();
-        p.setName("Prabina Shrestha");
-        p.setImageUrl("https://lh6.googleusercontent.com/-QHb2of9MIYM/AAAAAAAAAAI/AAAAAAAAIDg/233bTCaj-do/photo.jpg?sz=50");
-        p.setEmail("prabinashrestha@gmail.com");
-        ArrayList<String> interestGroups = new ArrayList<String>();
-        interestGroups.add("Coffee");
-        interestGroups.add("Soccer");
-        p.setInterestGroups(interestGroups);
+//        MatchingPerson p = new MatchingPerson();
+//        p.setName("Prabina Shrestha");
+//        p.setImageUrl("https://lh6.googleusercontent.com/-QHb2of9MIYM/AAAAAAAAAAI/AAAAAAAAIDg/233bTCaj-do/photo.jpg?sz=50");
+//        p.setEmail("prabinashrestha@gmail.com");
+//        ArrayList<String> interestGroups = new ArrayList<String>();
+//        interestGroups.add("Coffee");
+//        interestGroups.add("Soccer");
+//        p.setInterestGroups(interestGroups);
 
-        this.currentPerson = p;
+//        this.currentPerson = p;
 
         this.renderProfile();
     }

@@ -1,5 +1,6 @@
 package com.affinitymapper.affinitymapper.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.location.Location;
@@ -25,6 +26,7 @@ import java.util.Arrays;
 public class MapsActivity extends FragmentActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private Activity currentActivity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,7 @@ public class MapsActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        Intent currentIntent = getIntent();
+        final Intent currentIntent = getIntent();
 
         //TODO replace with a real user object
         String userId = ((String) getIntent().getSerializableExtra("userId"));
@@ -97,18 +99,33 @@ public class MapsActivity extends FragmentActivity {
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentUser.getLatitude(), currentUser.getLongitude()), zoomLevel));
 
+        mMap.addMarker(new MarkerOptions().position(new LatLng(currentUser.getLatitude(), currentUser.getLongitude()))
+                .title(currentUser.getName())
+                .snippet(currentUser.getEmail()));
+
         final MatchingPersonList personList = (MatchingPersonList) currentIntent.getSerializableExtra("personList");
         for (MatchingPerson mPerson : personList.getMatchingPersons()) {
             mMap.addMarker(new MarkerOptions().position(new LatLng(mPerson.getLatitude(), mPerson.getLongitude()))
                     .title(mPerson.getName())
-                    .snippet(mPerson.getEmail()+"\n"+Arrays.toString(mPerson.getInterestGroups().toArray())));
+                    .snippet(mPerson.getEmail()));
         }
 
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener(){
             public void onInfoWindowClick(Marker marker){
-                // MatchingPerson selectedPerson = personList.getMatchingPersons();
                 Toast.makeText(getBaseContext(), marker.getTitle(), Toast.LENGTH_SHORT);
+
+                MatchingPerson mPerson = new MatchingPerson();
+                for(MatchingPerson person : personList.getMatchingPersons()){
+                    if(person.getName().compareTo(marker.getTitle()) == 0 && person.getEmail().compareTo(marker.getSnippet()) == 0){
+                        mPerson = person;
+                    }
+                }
+
+                Intent mapIntent = new Intent(currentActivity, ProfileActivity.class);
+                mapIntent.putExtra("matchingPerson", mPerson);
+                startActivity(mapIntent);
+
             }
         });
     }

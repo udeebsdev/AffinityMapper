@@ -12,7 +12,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Created by udeebsdev on 4/30/14.
@@ -42,6 +44,15 @@ public class UpdateLocation extends AffinityRepository {
 
     @Override
     public BaseModel parseResponse(HttpResponse response) throws IOException {
+
+//        BufferedReader r = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+//        StringBuilder total = new StringBuilder();
+//        String line;
+//        while ((line = r.readLine()) != null) {
+//            total.append(line);
+//        }
+//        System.out.println(total.toString());
+
         return null;
     }
 

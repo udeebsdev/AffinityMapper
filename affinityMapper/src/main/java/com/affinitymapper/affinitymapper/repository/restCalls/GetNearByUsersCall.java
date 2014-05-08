@@ -39,7 +39,7 @@ public class GetNearByUsersCall extends AffinityRepository {
 
     @Override
     public HttpUriRequest createRequest(Object... params) {
-        return new HttpGet(URL_BASE + "getNearByUsers/" + "udeeb");
+        return new HttpGet(URL_BASE + "getNearByUsers/" + "112584951655147133556/Health");
     }
 
     @Override
