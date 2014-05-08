@@ -15,10 +15,6 @@
             android:value="AIzaSyDHHdJDjoQqh92rdVRVmKxk7H_ftO2aUkc" />
 
         <activity
-            android:name="com.affinitymapper.affinitymapper.activities.SignInActivity"
-            android:label="Sign In" >
-        </activity>
-        <activity
             android:name="com.affinitymapper.affinitymapper.activities.MainActivity"
             android:label="@string/title_activity_registration" >
         </activity>

@@ -2,11 +2,8 @@ package com.affinitymapper.affinitymapper.repository.restCalls;
 
 import android.app.Activity;
 import android.view.View;
-import android.widget.TextView;
 
-import com.affinitymapper.affinitymapper.R;
-import com.affinitymapper.affinitymapper.activities.RegistrationActivity;
-import com.affinitymapper.affinitymapper.activities.SignInActivity;
+import com.affinitymapper.affinitymapper.activities.LoginActivity;
 import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.Person;
 
@@ -58,12 +55,11 @@ public class GetUserInfoAfterSignIn extends AffinityRepository {
     public boolean runAfterSuccessfulCall(BaseModel result) {
         if(result == null)
         {
-            ((SignInActivity) this.parentActivity).launchRegistrationActivity();
+            ((LoginActivity) this.parentActivity).launchRegistrationActivity();
         }
         else{
-            ((SignInActivity) this.parentActivity).launchMainActivity();
+            ((LoginActivity) this.parentActivity).launchMainActivity();
         }
         return true;
-
     }
 }
