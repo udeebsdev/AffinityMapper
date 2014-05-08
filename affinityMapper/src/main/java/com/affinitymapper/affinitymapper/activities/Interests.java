@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.affinitymapper.affinitymapper.R;
 import android.widget.Toast;
+import android.app.TabActivity;
+import android.widget.TabHost.OnTabChangeListener;
 
 public class Interests extends Activity {
 
