@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.affinitymapper.affinitymapper.R;
+import com.affinitymapper.affinitymapper.activities.RegistrationActivity;
 import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.Person;
 
@@ -38,7 +39,7 @@ public class GetUserCall extends AffinityRepository {
 
     @Override
     public HttpUriRequest createRequest(Object... params) {
-        return new HttpGet(URL_BASE + "user/" + "udeeb");
+        return new HttpGet(URL_BASE + "user/" + params[0]);
     }
 
     @Override
@@ -50,13 +51,7 @@ public class GetUserCall extends AffinityRepository {
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        Person person = (Person)result;
-        TextView addressView = (TextView) this.currentView.findViewById(R.id.sampleText);
-        System.out.println(person.getEmail());
-        System.out.println(this.currentView != null ? true : false);
-        System.out.println(addressView != null ? true : false);
-        addressView.setText(person.getName());
-
+        ((RegistrationActivity) this.parentActivity).valuesLoaded((Person) result);
         return true;
     }
 }

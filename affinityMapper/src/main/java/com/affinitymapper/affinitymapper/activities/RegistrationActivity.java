@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.model.Person;
 import com.affinitymapper.affinitymapper.repository.restCalls.AddUser;
+import com.affinitymapper.affinitymapper.repository.restCalls.GetUserCall;
 import com.affinitymapper.affinitymapper.repository.restCalls.UpdateUser;
 import com.google.android.gms.plus.Plus;
 
@@ -30,6 +31,7 @@ public class RegistrationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.registration_1);
 
         String action = getIntent().getStringExtra("action");
@@ -39,6 +41,17 @@ public class RegistrationActivity extends Activity {
         np.setMinValue(1);
         np.setMaxValue(100);
         np.setValue(3);
+
+        if (this.updateExisting) {
+            new GetUserCall(null, this).execute(getIntent().getStringExtra("userId"));
+        }
+    }
+
+    public void valuesLoaded(Person person) {
+        ((EditText) findViewById(R.id.displayNameEdit)).setText(person.getName());
+        ((NumberPicker) findViewById(R.id.proximityPicker)).setValue(person.getProximityAlertLimit());
+        ((CheckBox) findViewById(R.id.proximityCheckbox)).setChecked(person.isProximityAlertToggle());
+        ((CheckBox) findViewById(R.id.chatRequestCheckbox)).setChecked(person.isChatRequestToggle());
     }
 
     public void registrationFormSubmit(View view) {
