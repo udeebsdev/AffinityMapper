@@ -32,7 +32,6 @@
     <style name="interestImageButtonStyle" parent="android:TextAppearance.DeviceDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1.0</item>
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 

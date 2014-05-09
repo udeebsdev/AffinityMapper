@@ -26,13 +26,15 @@
 
     <ScrollView
         android:layout_below="@id/profileButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
         >
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             >
             <ImageButton
                 style="@style/interestImageButtonStyle"
@@ -45,28 +47,24 @@
                 android:id="@+id/literatureButton"
                 android:src="@drawable/literature"
                 android:onClick="literatureClick"
-                android:layout_below="@id/sportsButton"
                 />
             <ImageButton
                 style="@style/interestImageButtonStyle"
                 android:id="@+id/historyButton"
                 android:src="@drawable/history"
                 android:onClick="historyClick"
-                android:layout_below="@id/literatureButton"
                 />
             <ImageButton
                 style="@style/interestImageButtonStyle"
                 android:id="@+id/politicsButton"
                 android:src="@drawable/politics"
                 android:onClick="politicsClick"
-                android:layout_below="@id/historyButton"
                 />
             <ImageButton
                 style="@style/interestImageButtonStyle"
                 android:id="@+id/moviesButton"
                 android:src="@drawable/movies"
                 android:onClick="moviesClick"
-                android:layout_below="@id/politicsButton"
                 />
             <ImageButton
                 style="@style/interestImageButtonStyle"
@@ -79,16 +77,14 @@
                 android:id="@+id/technologyButton"
                 android:src="@drawable/technology"
                 android:onClick="technologyClick"
-                android:layout_below="@id/healthButton"
                 />
             <ImageButton
                 style="@style/interestImageButtonStyle"
                 android:id="@+id/foodButton"
                 android:src="@drawable/food"
                 android:onClick="foodClick"
-                android:layout_below="@id/technologyButton"
                 />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>
