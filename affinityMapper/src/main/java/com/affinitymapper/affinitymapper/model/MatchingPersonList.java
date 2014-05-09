@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by udeebsdev on 5/1/14.
  */
-public class MatchingPersonList implements BaseModel, Serializable {
+public class MatchingPersonList extends BaseModel {
 
     private List<MatchingPerson> matchingPersons;
 

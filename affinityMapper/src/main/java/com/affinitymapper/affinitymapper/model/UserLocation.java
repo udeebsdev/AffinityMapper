@@ -3,7 +3,7 @@ package com.affinitymapper.affinitymapper.model;
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class UserLocation implements BaseModel{
+public class UserLocation extends BaseModel{
     private String userId;
     private boolean active;
     private Double latitude;

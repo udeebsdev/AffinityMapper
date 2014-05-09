@@ -6,7 +6,6 @@ import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Display;
 import android.widget.Toast;
 
@@ -14,14 +13,14 @@ import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.Utilities.LocationUtilities;
 import com.affinitymapper.affinitymapper.model.MatchingPerson;
 import com.affinitymapper.affinitymapper.model.MatchingPersonList;
+import com.affinitymapper.affinitymapper.model.Person;
+import com.affinitymapper.affinitymapper.repository.restCalls.GetNearByUsersCall;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.Arrays;
 
 public class MapsActivity extends FragmentActivity {
 
@@ -78,18 +77,18 @@ public class MapsActivity extends FragmentActivity {
     private void setUpMap() {
         final Intent currentIntent = getIntent();
 
-        //TODO replace with a real user object
-        String userId = ((String) getIntent().getSerializableExtra("userId"));
-        String email = ((String) getIntent().getSerializableExtra("email"));
-        String imageUrl = ((String) getIntent().getSerializableExtra("imageUrl"));
+        Person person = (Person) getIntent().getSerializableExtra("person");
         String interest = ((String) getIntent().getSerializableExtra("interest"));
+
+        // Make a call to get close by users
+        new GetNearByUsersCall(null, this).execute(person.getUserId(), interest);
 
 
         LocationUtilities locationHelper = LocationUtilities.getLocationUtilities(this);
         Location currentUserLocation = locationHelper.getCurrentLocation();
 
         MatchingPerson currentUser = new MatchingPerson();
-        currentUser.setUserId(userId);
+        currentUser.setUserId(person.getUserId());
         currentUser.setLatitude(currentUserLocation.getLatitude());
         currentUser.setLongitude(currentUserLocation.getLongitude());
 
@@ -103,21 +102,23 @@ public class MapsActivity extends FragmentActivity {
                 .title(currentUser.getName())
                 .snippet(currentUser.getEmail()));
 
-        final MatchingPersonList personList = (MatchingPersonList) currentIntent.getSerializableExtra("personList");
+    }
+
+    public void putUsersOnTheMap(final MatchingPersonList personList) {
+        // final MatchingPersonList personList = (MatchingPersonList) currentIntent.getSerializableExtra("personList");
         for (MatchingPerson mPerson : personList.getMatchingPersons()) {
             mMap.addMarker(new MarkerOptions().position(new LatLng(mPerson.getLatitude(), mPerson.getLongitude()))
                     .title(mPerson.getName())
                     .snippet(mPerson.getEmail()));
         }
 
-
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener(){
-            public void onInfoWindowClick(Marker marker){
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            public void onInfoWindowClick(Marker marker) {
                 Toast.makeText(getBaseContext(), marker.getTitle(), Toast.LENGTH_SHORT);
 
                 MatchingPerson mPerson = new MatchingPerson();
-                for(MatchingPerson person : personList.getMatchingPersons()){
-                    if(person.getName().compareTo(marker.getTitle()) == 0 && person.getEmail().compareTo(marker.getSnippet()) == 0){
+                for (MatchingPerson person : personList.getMatchingPersons()) {
+                    if (person.getName().compareTo(marker.getTitle()) == 0 && person.getEmail().compareTo(marker.getSnippet()) == 0) {
                         mPerson = person;
                     }
                 }

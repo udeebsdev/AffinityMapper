@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class Person implements BaseModel {
+public class Person extends BaseModel {
     private String userId;
     private String name;
     private String email;

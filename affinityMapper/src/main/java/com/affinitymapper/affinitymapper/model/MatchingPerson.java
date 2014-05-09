@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by udeebsdev on 4/30/14.
  */
-public class MatchingPerson implements Serializable, BaseModel{
+public class MatchingPerson extends BaseModel{
 
     private String userId;
     private String name;

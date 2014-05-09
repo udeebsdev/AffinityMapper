@@ -3,14 +3,10 @@ package com.affinitymapper.affinitymapper.repository.restCalls;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
 
-import com.affinitymapper.affinitymapper.R;
-import com.affinitymapper.affinitymapper.activities.MainActivity;
 import com.affinitymapper.affinitymapper.activities.MapsActivity;
 import com.affinitymapper.affinitymapper.model.BaseModel;
 import com.affinitymapper.affinitymapper.model.MatchingPersonList;
-import com.google.android.gms.plus.Plus;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -39,7 +35,9 @@ public class GetNearByUsersCall extends AffinityRepository {
 
     @Override
     public HttpUriRequest createRequest(Object... params) {
-        return new HttpGet(URL_BASE + "getNearByUsers/" + "112584951655147133556/Health");
+        System.out.println("User Id is => " + params[0]);
+        System.out.println("Interest is => " + params[1]);
+        return new HttpGet(URL_BASE + "getNearByUsers/" + params[0] + "/" + "Health");
     }
 
     @Override
@@ -58,9 +56,10 @@ public class GetNearByUsersCall extends AffinityRepository {
     public boolean runAfterSuccessfulCall(BaseModel result) {
         MatchingPersonList personList = (MatchingPersonList) result;
 
-        Intent mapIntent = new Intent(this.parentActivity, MapsActivity.class);
-        mapIntent.putExtra("personList", personList);
-        this.parentActivity.startActivity(mapIntent);
+//        Intent mapIntent = new Intent(this.parentActivity, MapsActivity.class);
+//        mapIntent.putExtra("personList", personList);
+//        this.parentActivity.startActivity(mapIntent);
+        ((MapsActivity)this.parentActivity).putUsersOnTheMap(personList);
 
         return true;
     }

@@ -11,6 +11,7 @@ import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.Utilities.LocationUtilities;
 import com.affinitymapper.affinitymapper.model.Person;
 import com.affinitymapper.affinitymapper.model.UserLocation;
+import com.affinitymapper.affinitymapper.repository.restCalls.GetNearByUsersCall;
 import com.affinitymapper.affinitymapper.repository.restCalls.UpdateLocation;
 
 import android.widget.ImageButton;
@@ -50,7 +51,7 @@ public class Interests extends Activity {
         interestGroups.add("Food");
         person.setInterestGroups(interestGroups);
 
-        updateLocation();
+        // updateLocation();
 
         updateUI();
     }
@@ -95,33 +96,31 @@ public class Interests extends Activity {
     public void sportsClicked(View view)
     {
         Toast.makeText(getApplicationContext(), "Sports button is clicked", Toast.LENGTH_LONG).show();
-        launchMaps("Sport");
+        launchMaps(view, "Sport");
 
     }
 
     public void literatureClick(View view)
     {
         Toast.makeText(getApplicationContext(), "Literature button is clicked", Toast.LENGTH_LONG).show();
-        launchMaps("Literature");
+        launchMaps(view, "Literature");
     }
 
     public void historyClick(View view)
     {
         Toast.makeText(getApplicationContext(), "History button is clicked", Toast.LENGTH_LONG).show();
-        launchMaps("History");
+        launchMaps(view, "History");
     }
 
     public void PoliticsClick(View view)
     {
         Toast.makeText(getApplicationContext(), "Politics button is clicked", Toast.LENGTH_LONG).show();
-        launchMaps("Politics");
+        launchMaps(view, "Politics");
     }
 
-    public void launchMaps(String interest){
+    public void launchMaps(View view, String interest){
         Intent registrationIntent = new Intent(this, MapsActivity.class);
-        registrationIntent.putExtra("email", person.getEmail());
-        registrationIntent.putExtra("userId", person.getUserId());
-        registrationIntent.putExtra("imageUrl", person.getImageUrl());
+        registrationIntent.putExtra("person", person);
         registrationIntent.putExtra("interest", interest);
         this.startActivityForResult(registrationIntent, RC_MAP_ACTIVITY);
     }

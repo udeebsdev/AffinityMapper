@@ -65,6 +65,7 @@ public abstract class AffinityRepository extends AsyncTask<Object, Void, BaseMod
             client.close();
             return baseModel;
         } catch (Exception ex) {
+            System.out.println("Failed to contact remote server => " + ex.getLocalizedMessage());
             Log.w("GetContactTask", "Error getting contact", ex);
         }
         return null;

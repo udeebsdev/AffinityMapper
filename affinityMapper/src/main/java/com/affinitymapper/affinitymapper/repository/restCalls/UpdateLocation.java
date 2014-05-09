@@ -34,10 +34,12 @@ public class UpdateLocation extends AffinityRepository {
 
     @Override
     public HttpUriRequest createRequest(Object... params) throws IOException {
-        HttpPost uriRequest = new HttpPost(URL_BASE + "location/user/" + "udeeb");
+        UserLocation userLocation = (UserLocation) params[0];
+        System.out.println("Updating location for UserId => " + userLocation.getUserId());
+        HttpPost uriRequest = new HttpPost(URL_BASE + "location/user/" + userLocation.getUserId());
 
-        System.out.println(gson.toJson((UserLocation) params[0]));
-        StringEntity se = new StringEntity(gson.toJson((UserLocation) params[0]));
+        System.out.println(gson.toJson(userLocation));
+        StringEntity se = new StringEntity(gson.toJson(userLocation));
         uriRequest.setEntity(se);
         return uriRequest;
     }
