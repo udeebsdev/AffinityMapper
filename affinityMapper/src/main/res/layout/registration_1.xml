@@ -9,111 +9,194 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/displayNameEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="25dp"
-        android:hint="Display Name"
-        />
-
-    <TableLayout
-        android:id="@+id/newRegistrationTable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/displayNameEdit"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:paddingBottom="30dp">
-
-        <TableRow>
-            <TextView
-                style="@style/userProfileTextFields"
-                android:id="@+id/interestGroupsText"
-                android:text="Interest Group"
-                />
-
-            <Spinner
-                style="@style/userProfileEditFields"
-                android:id="@+id/interestGroupsSpinner"
+            <EditText
+                android:id="@+id/displayNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="1.0"
-                android:layout_toRightOf="@id/interestGroupsText"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:hint="Display Name"
+                />
+
+            <TableLayout
+                android:id="@+id/newRegistrationTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/displayNameEdit"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:paddingBottom="30dp">
+
+                <TableRow>
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/interestGroupsText"
+                        android:text="Interest Group"
+                        />
+                    <!--
+                    <ListView
+                        style="@style/userProfileEditFields"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/interestGroupsSpinner"
+                        android:layout_toRightOf="@id/interestGroupsText"
+                        android:layout_below="@id/newRegistrationTable"
+                        android:entries="@array/interestOptions"
+                        android:gravity="center"
+                        />
+                        -->
+                </TableRow>
+                <TableLayout
+                    android:id="@+id/interestGroupSelectorTable"
+                    android:layout_below="@id/interestGroupText"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="40dp"
+                    >
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regSportsText"
+                            android:text="Sports"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regLiteratureText"
+                            android:text="Literature"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regHistoryText"
+                            android:text="History"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regPoliticsText"
+                            android:text="Politics"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regHealthText"
+                            android:text="Health"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regMoviesText"
+                            android:text="Movies"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regTechnologyText"
+                            android:text="Technology"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            style="@style/interestCheckTextStyles"
+                            android:id="@+id/regFoodText"
+                            android:text="Food"
+                            />
+                        <CheckBox
+                            android:id="@+id/sportsCheckBox"
+                            />
+                    </TableRow>
+                </TableLayout>
+
+                <TableRow
+                    android:layout_marginTop="20dp">
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/proximityText"
+                        android:layout_below="@id/interestGroupsText"
+                        android:text="Proximity for Alert (miles)"
+                        />
+                    <NumberPicker
+                        style="@style/userProfileEditFields"
+                        android:id="@+id/proximityPicker"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="20dp"
+                    >
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/proximityCheckboxText"
+                        android:text="Proximity Notifications"
+                        />
+                    <CheckBox
+                        style="@style/userProfileEditFields"
+                        android:id="@+id/proximityCheckbox"
+                        />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="20dp">
+                    <TextView
+                        style="@style/userProfileTextFields"
+                        android:id="@+id/chatRequestText"
+                        android:text="Accept Chat Requests"
+                        />
+                    <CheckBox
+                        style="@style/userProfileEditFields"
+                        android:id="@+id/chatRequestCheckbox"
+                        />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:text="Save"
+                android:background="#C4EBFF"
+                android:paddingRight="40dp"
+                android:paddingLeft="40dp"
+                android:onClick="registrationFormSubmit"
                 android:layout_below="@id/newRegistrationTable"
-                android:entries="@array/interestOptions"
-                android:gravity="center"
+                android:layout_marginTop="20dp"
                 />
-        </TableRow>
-
-        <TableRow
-            android:layout_marginTop="20dp">
-            <TextView
-                style="@style/userProfileTextFields"
-                android:id="@+id/proximityText"
-                android:layout_below="@id/interestGroupsText"
-                android:text="Proximity for Alert (miles)"
-                android:weightSum="1.0"
-                android:gravity="center"
-                />
-            <NumberPicker
-                style="@style/userProfileEditFields"
-                android:id="@+id/proximityPicker"
-                android:layout_below="@id/interestGroupsSpinner"
-                />
-        </TableRow>
-
-        <TableRow
-            android:layout_marginTop="20dp"
-            >
-            <TextView
-                style="@style/userProfileTextFields"
-                android:id="@+id/proximityCheckboxText"
-                android:text="Proximity Notifications"
-                />
-            <CheckBox
-                style="@style/userProfileEditFields"
-                android:id="@+id/proximityCheckbox"
-                android:layout_below="@id/newRegistrationTable"
-                />
-        </TableRow>
-
-        <TableRow android:layout_marginTop="20dp">
-            <TextView
-                style="@style/userProfileTextFields"
-                android:id="@+id/chatRequestText"
-                android:text="Accept Chat Requests"
-                />
-            <CheckBox
-                style="@style/userProfileEditFields"
-                android:id="@+id/chatRequestCheckbox"
-                />
-        </TableRow>
-
-    </TableLayout>
-
-    <Button
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="Save"
-        android:background="#C4EBFF"
-        android:paddingRight="40dp"
-        android:paddingLeft="40dp"
-        android:onClick="registrationFormSubmit"
-        android:layout_below="@id/newRegistrationTable"
-        android:layout_marginTop="20dp"
-        />
-    </RelativeLayout>
+        </RelativeLayout>
     </ScrollView>
 
 </RelativeLayout>

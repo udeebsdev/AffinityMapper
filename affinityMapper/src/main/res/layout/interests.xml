@@ -19,8 +19,8 @@
         android:background="#bbbbbb"
         android:layout_below="@id/interestsLabel"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:onClick="editUserProfile"
         />
 
