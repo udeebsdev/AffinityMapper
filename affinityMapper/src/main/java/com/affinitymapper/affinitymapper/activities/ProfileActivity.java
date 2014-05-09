@@ -79,7 +79,7 @@ public class ProfileActivity extends Activity {
         nameView.setText(this.currentPerson.getName());
 
         TextView proximityView = (TextView)this.findViewById(R.id.proximityView);
-        proximityView.setText("10 miles");
+        proximityView.setText(this.currentPerson.getProximityAlertLimit()+ " miles");
 
         TextView interestView = (TextView)this.findViewById(R.id.interestView);
         interestView.setText(this.currentPerson.getInterestGroups().toString());

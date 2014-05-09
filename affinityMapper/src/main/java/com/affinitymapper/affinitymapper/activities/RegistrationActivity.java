@@ -147,7 +147,7 @@ public class RegistrationActivity extends Activity {
 
     public boolean userRegistrationComplete()
     {
-        if (this.updateExisting) {
+        if (!this.updateExisting) {
             Toast.makeText(getApplicationContext(), "Registration Completed.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), "Profile Updated.", Toast.LENGTH_SHORT).show();
