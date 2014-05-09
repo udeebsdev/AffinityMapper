@@ -31,8 +31,9 @@ public class Interests extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.interests);
 
-        //TODO: pass in the real person object
-        String userId = ((String) getIntent().getSerializableExtra("userId"));
+        person = (Person) getIntent().getSerializableExtra("person");
+
+        /*String userId = ((String) getIntent().getSerializableExtra("userId"));
         String email = ((String) getIntent().getSerializableExtra("email"));
         String imageUrl = ((String) getIntent().getSerializableExtra("imageUrl"));
 
@@ -49,9 +50,9 @@ public class Interests extends Activity {
         interestGroups.add("Health");
         interestGroups.add("Technology");
         interestGroups.add("Food");
-        person.setInterestGroups(interestGroups);
+        person.setInterestGroups(interestGroups);*/
 
-        // updateLocation();
+        updateLocation();
 
         updateUI();
     }
