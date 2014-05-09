@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class Interests extends Activity {
 
     private static final int RC_MAP_ACTIVITY =15;
+    private static final int RC_REG_ACTIVITY = 13;
     Person person;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,5 +138,14 @@ public class Interests extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void editUserProfile(View view) {
+        Intent mainIntent = new Intent(this, RegistrationActivity.class);
+        mainIntent.putExtra("email", getIntent().getStringExtra("email"));
+        mainIntent.putExtra("userId", getIntent().getStringExtra("userId"));
+        mainIntent.putExtra("imageUrl", getIntent().getStringExtra("imageUrl"));
+        mainIntent.putExtra("action", "update");
+        this.startActivityForResult(mainIntent, RC_REG_ACTIVITY);
     }
 }

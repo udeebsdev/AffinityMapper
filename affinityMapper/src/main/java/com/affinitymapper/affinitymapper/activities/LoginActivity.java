@@ -308,6 +308,7 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         registrationIntent.putExtra("email", email);
         registrationIntent.putExtra("userId", userId);
         registrationIntent.putExtra("imageUrl", imageUrl);
+        registrationIntent.putExtra("action", "new");
         this.startActivityForResult(registrationIntent, RC_REG_ACTIVITY);
     }
 

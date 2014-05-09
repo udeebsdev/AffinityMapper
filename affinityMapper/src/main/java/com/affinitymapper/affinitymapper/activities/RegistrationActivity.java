@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.affinitymapper.affinitymapper.R;
 import com.affinitymapper.affinitymapper.model.Person;
 import com.affinitymapper.affinitymapper.repository.restCalls.AddUser;
+import com.affinitymapper.affinitymapper.repository.restCalls.UpdateUser;
 import com.google.android.gms.plus.Plus;
 
 import java.util.ArrayList;
@@ -23,11 +24,16 @@ import java.util.Collections;
  */
 public class RegistrationActivity extends Activity {
     private static final int RC_INT_ACTIVITY =14;
+    public boolean updateExisting = false;
+    private Person currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_1);
+
+        String action = getIntent().getStringExtra("action");
+        this.updateExisting = "update".equals(action);
 
         NumberPicker np = (NumberPicker) findViewById(R.id.proximityPicker);
         np.setMinValue(1);
@@ -58,17 +64,28 @@ public class RegistrationActivity extends Activity {
         boolean chatNotify = ((CheckBox) findViewById(R.id.chatRequestCheckbox)).isChecked();
         person.setChatRequestToggle(chatNotify);
 
-        new AddUser(view.getRootView(), this).execute(person);
+        this.currentUser = person;
+
+        if (this.updateExisting) {
+            new UpdateUser(view.getRootView(), this).execute(person);
+        } else {
+            new AddUser(view.getRootView(), this).execute(person);
+        }
     }
 
     public boolean userRegistrationComplete()
     {
-        Toast.makeText(getApplicationContext(), "Registration Completed.", Toast.LENGTH_SHORT).show();
+        if (this.updateExisting) {
+            Toast.makeText(getApplicationContext(), "Registration Completed.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Profile Updated.", Toast.LENGTH_SHORT).show();
+        }
 
         Intent mainIntent = new Intent(this, Interests.class);
         mainIntent.putExtra("email", getIntent().getStringExtra("email"));
         mainIntent.putExtra("userId", getIntent().getStringExtra("userId"));
         mainIntent.putExtra("imageUrl", getIntent().getStringExtra("imageUrl"));
+        mainIntent.putExtra("person", this.currentUser);
         this.startActivityForResult(mainIntent, RC_INT_ACTIVITY);
 
         return true;

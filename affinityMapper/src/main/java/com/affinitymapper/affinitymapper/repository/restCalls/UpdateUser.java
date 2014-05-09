@@ -51,8 +51,7 @@ public class UpdateUser extends AffinityRepository {
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        //Return back to parent activity
-        //((RegistrationActivity) this.parentActivity).userRegistrationComplete();
+        ((RegistrationActivity) this.parentActivity).userRegistrationComplete();
         return true;
     }
 }
