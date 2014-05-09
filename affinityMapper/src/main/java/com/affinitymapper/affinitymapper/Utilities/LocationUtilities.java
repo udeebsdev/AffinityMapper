@@ -40,7 +40,7 @@ public class LocationUtilities {
         String bestProvider = locationManager.getBestProvider(criteria, false);
         currentLocation = locationManager.getLastKnownLocation(bestProvider);
 
-        System.out.println("Last known Users Location is => Lat : "+ currentLocation.getLatitude() +" Lon is : "+currentLocation.getLongitude());
+        System.out.println("Last known Users Location 1 is => Lat : "+ currentLocation.getLatitude() +" Lon is : "+currentLocation.getLongitude());
 
         LocationListener loc_listener = new LocationListener() {
 

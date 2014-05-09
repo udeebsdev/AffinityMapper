@@ -39,7 +39,7 @@ public class GetNearByUsersCall extends AffinityRepository {
     public HttpUriRequest createRequest(Object... params) {
         System.out.println("User Id is => " + params[0]);
         System.out.println("Interest is => " + params[1]);
-        return new HttpGet(URL_BASE + "getNearByUsers/" + params[0] + "/" + "Health");
+        return new HttpGet(URL_BASE + "getNearByUsers/" + params[0] + "/" + params[1]);
     }
 
     @Override

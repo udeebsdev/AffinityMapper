@@ -99,6 +99,9 @@ public class RegistrationActivity extends Activity {
         mainIntent.putExtra("userId", getIntent().getStringExtra("userId"));
         mainIntent.putExtra("imageUrl", getIntent().getStringExtra("imageUrl"));
         mainIntent.putExtra("person", this.currentUser);
+
+        getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         this.startActivityForResult(mainIntent, RC_INT_ACTIVITY);
 
         return true;
