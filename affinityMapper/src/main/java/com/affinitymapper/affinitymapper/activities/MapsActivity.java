@@ -93,14 +93,14 @@ public class MapsActivity extends FragmentActivity {
         currentUser.setLongitude(currentUserLocation.getLongitude());
 
         //(MatchingPerson) currentIntent.getSerializableExtra("currentPerson");
-        float zoomLevel = calculateZoomLevel(10);
+        float zoomLevel = calculateZoomLevel(person.getProximityAlertLimit() == 0 ? 10 : person.getProximityAlertLimit());
         System.out.println("Current zoom level is => " + zoomLevel);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentUser.getLatitude(), currentUser.getLongitude()), zoomLevel));
 
-        mMap.addMarker(new MarkerOptions().position(new LatLng(currentUser.getLatitude(), currentUser.getLongitude()))
-                .title(currentUser.getName())
-                .snippet(currentUser.getEmail()));
+//        mMap.addMarker(new MarkerOptions().position(new LatLng(currentUser.getLatitude(), currentUser.getLongitude()))
+//                .title(currentUser.getName())
+//                .snippet(currentUser.getEmail()));
 
     }
 
