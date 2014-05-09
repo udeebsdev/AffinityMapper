@@ -263,6 +263,9 @@ public class LoginActivity extends Activity implements View.OnClickListener,
     }
 
     public void launchMainActivity() {
+        if(!mGoogleApiClient.isConnected()){
+            mGoogleApiClient.connect();
+        }
         System.out.println("Launching Main Activity");
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
         String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
@@ -275,7 +278,10 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         this.startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
     }
 
-    public void launchInterestsActivity() {
+    public void launchInterestsActivity(com.affinitymapper.affinitymapper.model.Person person) {
+        if(!mGoogleApiClient.isConnected()){
+            mGoogleApiClient.connect();
+        }
         System.out.println("Launching Interests Activity");
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
         String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
@@ -285,10 +291,14 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         mainIntent.putExtra("email", email);
         mainIntent.putExtra("userId", userId);
         mainIntent.putExtra("imageUrl", imageUrl);
+        mainIntent.putExtra("person", person);
         this.startActivityForResult(mainIntent, RC_INT_ACTIVITY);
     }
 
     public void launchRegistrationActivity() {
+        if(!mGoogleApiClient.isConnected()){
+            mGoogleApiClient.connect();
+        }
         System.out.println("Launching Registration activity");
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
         String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
