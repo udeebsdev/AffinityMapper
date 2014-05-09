@@ -10,7 +10,22 @@
         android:text="Interests"
         />
 
+    <Button
+        android:id="@+id/profileButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Edit Profile"
+        android:background="#bbbbbb"
+        android:layout_below="@id/interestsLabel"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:onClick="editUserProfile"
+        />
+
     <ScrollView
+        android:layout_below="@id/profileButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
