@@ -18,7 +18,7 @@
         android:text="Edit Profile"
         android:background="#bbbbbb"
         android:layout_below="@id/interestsLabel"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:onClick="editUserProfile"
@@ -27,51 +27,67 @@
     <ScrollView
         android:layout_below="@id/profileButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TableLayout
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow
-                    style="@style/interestTableRowStyle">
-
-                    <ImageButton
-                        style="@style/interestImageButtonStyle"
-                        android:id="@+id/sportsButton"
-                        android:src="@drawable/sports"
-                        android:onClick="sportsClicked"
-                        />
-
-                    <ImageButton
-                        style="@style/interestImageButtonStyle"
-                        android:id="@+id/literatureButton"
-                        android:src="@drawable/literature"
-                        android:onClick="literatureClick"
-                        />
-                </TableRow>
-
-                <TableRow
-                    style="@style/interestTableRowStyle"
-                    >
-                    <ImageButton
-                        style="@style/interestImageButtonStyle"
-                        android:id="@+id/historyButton"
-                        android:src="@drawable/history"
-                        android:onClick="historyClick"
-                        />
-
-                    <ImageButton
-                        style="@style/interestImageButtonStyle"
-                        android:id="@+id/politicsButton"
-                        android:src="@drawable/politics"
-                        android:onClick="PoliticsClick"
-                        />
-
-                </TableRow>
-            </TableLayout>
+            android:layout_height="wrap_content"
+            >
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/sportsButton"
+                android:src="@drawable/sports"
+                android:onClick="sportsClick"
+                />
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/literatureButton"
+                android:src="@drawable/literature"
+                android:onClick="literatureClick"
+                android:layout_below="@id/sportsButton"
+                />
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/historyButton"
+                android:src="@drawable/history"
+                android:onClick="historyClick"
+                android:layout_below="@id/literatureButton"
+                />
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/politicsButton"
+                android:src="@drawable/politics"
+                android:onClick="politicsClick"
+                android:layout_below="@id/historyButton"
+                />
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/moviesButton"
+                android:src="@drawable/movies"
+                android:onClick="moviesClick"
+                android:layout_below="@id/politicsButton"
+                />
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/healthButton"
+                android:src="@drawable/health"
+                android:onClick="healthClick"
+                />
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/technologyButton"
+                android:src="@drawable/technology"
+                android:onClick="technologyClick"
+                android:layout_below="@id/healthButton"
+                />
+            <ImageButton
+                style="@style/interestImageButtonStyle"
+                android:id="@+id/foodButton"
+                android:src="@drawable/food"
+                android:onClick="foodClick"
+                android:layout_below="@id/technologyButton"
+                />
         </RelativeLayout>
     </ScrollView>
 

@@ -59,11 +59,15 @@ public class Interests extends Activity {
     }
 
     private void updateUI(){
-        //TODO add support for remaining interests
         ((ImageButton) findViewById(R.id.sportsButton)).setVisibility(View.GONE);
         ((ImageButton) findViewById(R.id.historyButton)).setVisibility(View.GONE);
         ((ImageButton) findViewById(R.id.literatureButton)).setVisibility(View.GONE);
         ((ImageButton) findViewById(R.id.politicsButton)).setVisibility(View.GONE);
+        ((ImageButton) findViewById(R.id.healthButton)).setVisibility(View.GONE);
+        ((ImageButton) findViewById(R.id.moviesButton)).setVisibility(View.GONE);
+        ((ImageButton) findViewById(R.id.technologyButton)).setVisibility(View.GONE);
+        ((ImageButton) findViewById(R.id.foodButton)).setVisibility(View.GONE);
+
 
 
         for (String interest : person.getInterestGroups()){
@@ -78,6 +82,18 @@ public class Interests extends Activity {
             }
             else if("Politics".equalsIgnoreCase(interest)){
                 ((ImageButton) findViewById(R.id.politicsButton)).setVisibility(View.VISIBLE);
+            }
+            else if("Health".equalsIgnoreCase(interest)){
+                ((ImageButton) findViewById(R.id.healthButton)).setVisibility(View.VISIBLE);
+            }
+            else if("Movies".equalsIgnoreCase(interest)){
+                ((ImageButton) findViewById(R.id.moviesButton)).setVisibility(View.VISIBLE);
+            }
+            else if("Technology".equalsIgnoreCase(interest)){
+                ((ImageButton) findViewById(R.id.technologyButton)).setVisibility(View.VISIBLE);
+            }
+            else if("Food".equalsIgnoreCase(interest)){
+                ((ImageButton) findViewById(R.id.foodButton)).setVisibility(View.VISIBLE);
             }
         }
     }
@@ -95,29 +111,53 @@ public class Interests extends Activity {
         new UpdateLocation(null, this).execute(userLocation);
     }
 
-    public void sportsClicked(View view)
+    public void sportsClick(View view)
     {
-        Toast.makeText(getApplicationContext(), "Sports button is clicked", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Sports interest selected", Toast.LENGTH_LONG).show();
         launchMaps(view, "Sport");
 
     }
 
     public void literatureClick(View view)
     {
-        Toast.makeText(getApplicationContext(), "Literature button is clicked", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Literature interest selected", Toast.LENGTH_LONG).show();
         launchMaps(view, "Literature");
     }
 
     public void historyClick(View view)
     {
-        Toast.makeText(getApplicationContext(), "History button is clicked", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "History interest selected", Toast.LENGTH_LONG).show();
         launchMaps(view, "History");
     }
 
-    public void PoliticsClick(View view)
+    public void politicsClick(View view)
     {
-        Toast.makeText(getApplicationContext(), "Politics button is clicked", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Politics interest selected", Toast.LENGTH_LONG).show();
         launchMaps(view, "Politics");
+    }
+
+    public void healthClick(View view)
+    {
+        Toast.makeText(getApplicationContext(), "Health interest selected", Toast.LENGTH_LONG).show();
+        launchMaps(view, "Health");
+    }
+
+    public void moviesClick(View view)
+    {
+        Toast.makeText(getApplicationContext(), "Movies interest selected", Toast.LENGTH_LONG).show();
+        launchMaps(view, "Movies");
+    }
+
+    public void technologyClick(View view)
+    {
+        Toast.makeText(getApplicationContext(), "Technology interest selected", Toast.LENGTH_LONG).show();
+        launchMaps(view, "Technology");
+    }
+
+    public void foodClick(View view)
+    {
+        Toast.makeText(getApplicationContext(), "Food interest selected", Toast.LENGTH_LONG).show();
+        launchMaps(view, "Food");
     }
 
     public void launchMaps(View view, String interest){
