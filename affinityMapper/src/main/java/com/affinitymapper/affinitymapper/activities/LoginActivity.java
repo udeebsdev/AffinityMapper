@@ -66,8 +66,12 @@ public class LoginActivity extends Activity implements View.OnClickListener,
 
     private ConnectionResult mConnectionResult;
 
+    private com.affinitymapper.affinitymapper.model.Person registeredPerson;
+
     private SignInButton btnSignIn;
     private Button btnSignOut;
+    private Button btnRegister;
+    private Button btnContinue;
     private ImageView imgProfilePic;
     private TextView txtName, txtEmail;
     private LinearLayout llProfileLayout;
@@ -79,6 +83,8 @@ public class LoginActivity extends Activity implements View.OnClickListener,
 
         btnSignIn = (SignInButton) findViewById(R.id.btn_sign_in);
         btnSignOut = (Button) findViewById(R.id.btn_sign_out);
+        btnRegister = (Button) findViewById(R.id.btn_register);
+        btnContinue = (Button) findViewById(R.id.btn_continue);
         imgProfilePic = (ImageView) findViewById(R.id.imgProfilePic);
         txtName = (TextView) findViewById(R.id.txtName);
         txtEmail = (TextView) findViewById(R.id.txtEmail);
@@ -199,11 +205,26 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         if (isSignedIn) {
             btnSignIn.setVisibility(View.GONE);
             btnSignOut.setVisibility(View.VISIBLE);
+            btnRegister.setVisibility(View.GONE);
+            btnContinue.setVisibility(View.GONE);
             llProfileLayout.setVisibility(View.VISIBLE);
         } else {
             btnSignIn.setVisibility(View.VISIBLE);
             btnSignOut.setVisibility(View.GONE);
             llProfileLayout.setVisibility(View.GONE);
+            btnRegister.setVisibility(View.GONE);
+            btnContinue.setVisibility(View.GONE);
+        }
+    }
+
+    public void updateUIAfterSignIn(com.affinitymapper.affinitymapper.model.Person person) {
+        if (person !=null) {
+            registeredPerson = person;
+            btnContinue.setVisibility(View.VISIBLE);
+            btnRegister.setVisibility(View.GONE);
+        } else {
+            btnContinue.setVisibility(View.GONE);
+            btnRegister.setVisibility(View.VISIBLE);
         }
     }
     /**
@@ -262,20 +283,11 @@ public class LoginActivity extends Activity implements View.OnClickListener,
         }
     }
 
-    public void launchMainActivity() {
-        if(!mGoogleApiClient.isConnected()){
-            mGoogleApiClient.connect();
-        }
-        System.out.println("Launching Main Activity");
-        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
-        String userId = currentPerson.getId();
-        String imageUrl = currentPerson.getImage().getUrl();
-        Intent mainIntent = new Intent(this, MainActivity.class);
-        mainIntent.putExtra("email", email);
-        mainIntent.putExtra("userId", userId);
-        mainIntent.putExtra("imageUrl", imageUrl);
-        this.startActivityForResult(mainIntent, RC_MAIN_ACTIVITY);
+    public void onRegisterClicked(View view){
+        this.launchRegistrationActivity();
+    }
+    public void onContinueClicked(View view){
+        this.launchInterestsActivity(registeredPerson);
     }
 
     public void launchInterestsActivity(com.affinitymapper.affinitymapper.model.Person person) {

@@ -53,13 +53,7 @@ public class GetUserInfoAfterSignIn extends AffinityRepository {
 
     @Override
     public boolean runAfterSuccessfulCall(BaseModel result) {
-        if(result == null)
-        {
-            ((LoginActivity) this.parentActivity).launchRegistrationActivity();
-        }
-        else{
-            ((LoginActivity) this.parentActivity).launchInterestsActivity((Person) result);
-        }
+        ((LoginActivity) this.parentActivity).updateUIAfterSignIn((Person) result);
         return true;
     }
 }

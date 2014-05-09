@@ -12,7 +12,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDHHdJDjoQqh92rdVRVmKxk7H_ftO2aUkc" />
+            android:value="AIzaSyDs8Y25-mIjtWe166sPBZz3Q5Ubz_73WKk" />
 
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.MainActivity"
@@ -20,23 +20,23 @@
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.MapsActivity"
-            android:label="Maps" >
+            android:label="Affinity Mapper" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.RegistrationActivity"
-            android:label="@string/title_activity_sign_in" >
+            android:label="Affinity Mapper - Registration" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.ProfileActivity"
-            android:label="@string/title_activity_profile" >
+            android:label="Affinity Mapper - Others Profile" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.Interests"
-            android:label="Interests Page" >
+            android:label="Affinity Mapper - Interests Group" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="Affinity Mapper" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

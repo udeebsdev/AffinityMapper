@@ -1,10 +1,21 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/welcomeLabel"
+        style="@style/descBar"
+        android:text="Welcome to Affinity Mapper!!"
+        />
+
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Off"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/welcomeLabel"/>
 
     <LinearLayout
         android:id="@+id/llProfile"
@@ -13,11 +24,12 @@
         android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         android:weightSum="3"
-        android:visibility="gone">
+        android:visibility="visible"
+        android:layout_below="@id/btn_sign_out">
 
         <ImageView
             android:id="@+id/imgProfilePic"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
@@ -41,6 +53,23 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please Register your account"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                android:onClick="onRegisterClicked"/>
+            <Button
+                android:id="@+id/btn_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click here to Continue"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                android:onClick="onContinueClicked"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -48,14 +77,7 @@
         android:id="@+id/btn_sign_in"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
         android:layout_marginBottom="20dp"/>
 
-    <Button
-        android:id="@+id/btn_sign_out"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Off"
-        android:visibility="gone"
-        android:layout_marginBottom="10dp"/>
-
-</LinearLayout>
+</RelativeLayout>
