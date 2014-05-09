@@ -52,6 +52,33 @@ public class RegistrationActivity extends Activity {
         ((NumberPicker) findViewById(R.id.proximityPicker)).setValue(person.getProximityAlertLimit());
         ((CheckBox) findViewById(R.id.proximityCheckbox)).setChecked(person.isProximityAlertToggle());
         ((CheckBox) findViewById(R.id.chatRequestCheckbox)).setChecked(person.isChatRequestToggle());
+
+        ArrayList<String> interests = person.getInterestGroups();
+        if(interests.contains("Sports")){
+            ((CheckBox)findViewById(R.id.sportsCheckBox)).setChecked(true);
+        }
+        if(interests.contains("Literature")){
+            ((CheckBox)findViewById(R.id.literatureCheckBox)).setChecked(true);
+        }
+        if(interests.contains("History")){
+            ((CheckBox)findViewById(R.id.historyCheckBox)).setChecked(true);
+        }
+        if(interests.contains("Politics")){
+            ((CheckBox)findViewById(R.id.politicsCheckBox)).setChecked(true);
+        }
+        if(interests.contains("Health")){
+            ((CheckBox)findViewById(R.id.healthCheckBox)).setChecked(true);
+        }
+        if(interests.contains("Movies")){
+            ((CheckBox)findViewById(R.id.moviesCheckBox)).setChecked(true);
+        }
+        if(interests.contains("Technology")){
+            ((CheckBox)findViewById(R.id.technologyCheckBox)).setChecked(true);
+        }
+        if(interests.contains("Food")){
+            ((CheckBox)findViewById(R.id.foodCheckBox)).setChecked(true);
+        }
+
     }
 
     public void registrationFormSubmit(View view) {
@@ -63,11 +90,6 @@ public class RegistrationActivity extends Activity {
         String name = ((EditText) findViewById(R.id.displayNameEdit)).getText().toString();
         person.setName(name);
 
-        String group = ((Spinner) findViewById(R.id.interestGroupsSpinner)).getSelectedItem().toString();
-        ArrayList<String> interestGroups = new ArrayList<String>();
-        interestGroups.add(group);
-        person.setInterestGroups(interestGroups);
-
         int proximity = ((NumberPicker) findViewById(R.id.proximityPicker)).getValue();
         person.setProximityAlertLimit(proximity);
 
@@ -76,6 +98,43 @@ public class RegistrationActivity extends Activity {
 
         boolean chatNotify = ((CheckBox) findViewById(R.id.chatRequestCheckbox)).isChecked();
         person.setChatRequestToggle(chatNotify);
+
+        ArrayList<String> interestGroups = new ArrayList<String>();
+        if(((CheckBox)findViewById(R.id.sportsCheckBox)).isChecked())
+        {
+            interestGroups.add("Sports");
+        }
+        if(((CheckBox)findViewById(R.id.literatureCheckBox)).isChecked())
+        {
+            interestGroups.add("Literature");
+        }
+        if(((CheckBox)findViewById(R.id.historyCheckBox)).isChecked())
+        {
+            interestGroups.add("History");
+        }
+        if(((CheckBox)findViewById(R.id.politicsCheckBox)).isChecked())
+        {
+            interestGroups.add("Politics");
+        }
+        if(((CheckBox)findViewById(R.id.healthCheckBox)).isChecked())
+        {
+            interestGroups.add("Health");
+        }
+        if(((CheckBox)findViewById(R.id.moviesCheckBox)).isChecked())
+        {
+            interestGroups.add("Movies");
+        }
+        if(((CheckBox)findViewById(R.id.technologyCheckBox)).isChecked())
+        {
+            interestGroups.add("Technology");
+        }
+        if(((CheckBox)findViewById(R.id.foodCheckBox)).isChecked())
+        {
+            interestGroups.add("Food");
+        }
+
+
+        person.setInterestGroups(interestGroups);
 
         this.currentUser = person;
 

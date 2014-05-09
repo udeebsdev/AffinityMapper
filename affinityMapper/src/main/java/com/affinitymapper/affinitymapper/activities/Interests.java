@@ -71,7 +71,7 @@ public class Interests extends Activity {
 
 
         for (String interest : person.getInterestGroups()){
-            if("Sport".equalsIgnoreCase(interest)){
+            if("Sports".equalsIgnoreCase(interest)){
                 ((ImageButton) findViewById(R.id.sportsButton)).setVisibility(View.VISIBLE);
             }
             else if("History".equalsIgnoreCase(interest)){
@@ -114,7 +114,7 @@ public class Interests extends Activity {
     public void sportsClick(View view)
     {
         Toast.makeText(getApplicationContext(), "Sports interest selected", Toast.LENGTH_LONG).show();
-        launchMaps(view, "Sport");
+        launchMaps(view, "Sports");
 
     }
 

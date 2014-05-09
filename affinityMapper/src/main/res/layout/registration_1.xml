@@ -74,7 +74,7 @@
                             android:text="Literature"
                             />
                         <CheckBox
-                            android:id="@+id/sportsCheckBox"
+                            android:id="@+id/literatureCheckBox"
                             />
                     </TableRow>
                     <TableRow>
@@ -84,7 +84,7 @@
                             android:text="History"
                             />
                         <CheckBox
-                            android:id="@+id/sportsCheckBox"
+                            android:id="@+id/historyCheckBox"
                             />
                     </TableRow>
                     <TableRow>
@@ -94,7 +94,7 @@
                             android:text="Politics"
                             />
                         <CheckBox
-                            android:id="@+id/sportsCheckBox"
+                            android:id="@+id/politicsCheckBox"
                             />
                     </TableRow>
                     <TableRow>
@@ -104,7 +104,7 @@
                             android:text="Health"
                             />
                         <CheckBox
-                            android:id="@+id/sportsCheckBox"
+                            android:id="@+id/healthCheckBox"
                             />
                     </TableRow>
                     <TableRow>
@@ -114,7 +114,7 @@
                             android:text="Movies"
                             />
                         <CheckBox
-                            android:id="@+id/sportsCheckBox"
+                            android:id="@+id/moviesCheckBox"
                             />
                     </TableRow>
                     <TableRow>
@@ -124,7 +124,7 @@
                             android:text="Technology"
                             />
                         <CheckBox
-                            android:id="@+id/sportsCheckBox"
+                            android:id="@+id/technologyCheckBox"
                             />
                     </TableRow>
                     <TableRow>
@@ -134,7 +134,7 @@
                             android:text="Food"
                             />
                         <CheckBox
-                            android:id="@+id/sportsCheckBox"
+                            android:id="@+id/foodCheckBox"
                             />
                     </TableRow>
                 </TableLayout>

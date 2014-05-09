@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.RegistrationActivity"
-            android:label="Affinity Mapper - Registration" >
+            android:label="Affinity Mapper - Profile" >
         </activity>
         <activity
             android:name="com.affinitymapper.affinitymapper.activities.ProfileActivity"
