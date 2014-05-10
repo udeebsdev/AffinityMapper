@@ -73,7 +73,10 @@ public class Person extends BaseModel {
     }
 
     public ArrayList<String> getInterestGroups() {
-        return interestGroups;
+        if (this.interestGroups == null) {
+            this.interestGroups = new ArrayList<String>();
+        }
+        return this.interestGroups;
     }
 
     public void setInterestGroups(ArrayList<String> interestGroups) {
