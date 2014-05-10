@@ -140,7 +140,10 @@ public class MapsActivity extends FragmentActivity {
         double equatorLength = 40075004; // in meters
         double metersPerPixel = equatorLength / 256;
         int zoomLevel = 1;
-        while ((metersPerPixel * size.x) > (widthToDisplayInMiles * 1.6 * 1000)) {
+        System.out.println("Total width to display in m is => " + widthToDisplayInMiles * 1.6 * 1000 * 2 + " in miles is => " + widthToDisplayInMiles);
+
+        while ((metersPerPixel * size.x) > (widthToDisplayInMiles * 1.6 * 1000 * 2)) {
+            System.out.println("Current meter diplayed in window is => " + metersPerPixel * size.x);
             metersPerPixel /= 2;
             ++zoomLevel;
         }
